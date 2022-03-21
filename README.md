@@ -1,3 +1,1 @@
 # SEPM-2210-2C-WORDLE
-
-test
