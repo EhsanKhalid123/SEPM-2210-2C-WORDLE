@@ -13,6 +13,9 @@ function App() {
     attempt: 0,
     letterPosition: 0,
   });
+
+  const answer = "RIGHT";
+
   const onPickLetter = (keyval) => {
     if (currentAttempt.letterPosition > 4) return;
     const newBoard = [...board];
@@ -55,6 +58,7 @@ function App() {
           onPickLetter,
           onDeleteClick,
           onEnterClick,
+          answer,
         }}
       >
         <div className="site">
