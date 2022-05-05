@@ -4,6 +4,7 @@ import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import { createContext, useState } from "react";
 import { boardClean, generateGuessSet } from "./Tools";
+import EndScreen from "./components/EndScreen";
 
 export const AppContext = createContext();
 
@@ -14,12 +15,17 @@ function App() {
     letterPosition: 0,
   });
   const [guessSet, setGuessSet] = useState(new Set());
+  const [disabledLetters, setDisabledLetters] = useState([]);
+  const [gameCompleted, setGameCompleted] = useState({
+    gameCompleted: false,
+    guessedWord: false,
+  });
 
   const answer = "RIGHT";
 
   useEffect(() => {
     generateGuessSet().then((words) => {
-    setGuessSet(words.guessSet);
+      setGuessSet(words.guessSet);
     });
   });
 
@@ -53,15 +59,27 @@ function App() {
     }
 
     if (guessSet.has(currentWord.toLowerCase())) {
-      setCurrentAttempt({ attempt: currentAttempt.attempt + 1, letterPosition: 0 });
+      setCurrentAttempt({
+        attempt: currentAttempt.attempt + 1,
+        letterPosition: 0,
+      });
     } else {
-      alert("NO");
+      alert("Word not in Word List");
+    }
+
+    if (currentWord == answer) {
+      setGameCompleted({gameCompleted: true, guessedWord: true})
+      return;
+    }
+
+    if (currentAttempt.attempt === 5){
+      setGameCompleted({gameCompleted: true, guessedWord: false})
     }
   };
   return (
     <div className="App">
       <nav>
-        <h1>SEPM Wordle</h1>
+        <h1>wordo</h1>
       </nav>
       <AppContext.Provider
         value={{
@@ -73,11 +91,15 @@ function App() {
           onDeleteClick,
           onEnterClick,
           answer,
+          disabledLetters,
+          setDisabledLetters,
+          setGameCompleted,
+          gameCompleted,
         }}
       >
         <div className="site">
           <Board />
-          <Keyboard />
+          {gameCompleted.gameCompleted ? <EndScreen /> : <Keyboard />}
         </div>
       </AppContext.Provider>
     </div>
