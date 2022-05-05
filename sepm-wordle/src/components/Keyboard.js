@@ -19,11 +19,11 @@ function Keyboard() {
         })}
       </div>
       <div className="thirdLine">
-        <Key keyval={"ENTER"} functionKey/>
+        <Key keyval={"DELETE"} functionKey />
         {keys3.map((key) => {
           return <Key keyval={key} />;
         })}
-        <Key keyval={"DELETE"} functionKey/>
+        <Key keyval={"ENTER"} functionKey />
       </div>
     </div>
   );
