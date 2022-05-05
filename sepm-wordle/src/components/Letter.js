@@ -1,6 +1,8 @@
 import React from "react";
-
-function Letter() {
+{/**
+    component for letter to keep track of things
+*/}
+function Letter({letterPosition, attemptNumber}) {
   return <div>Letter</div>;
 }
 
