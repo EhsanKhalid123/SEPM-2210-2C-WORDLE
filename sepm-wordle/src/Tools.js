@@ -1,4 +1,5 @@
 import guessList from "./guess-list.txt";
+import answerList from "./test-answer-list.txt";
 
 export const boardClean = [
   ["", "", "", "", ""],
@@ -19,4 +20,15 @@ export const generateGuessSet = async () => {
     });
 
   return { guessSet };
+};
+
+export const randomlySelectAnswer = async () => {
+  let wordOfTheDay;
+  await fetch(answerList)
+    .then((response) => response.text())
+    .then((result) => {
+      const answerArr = result.split("\n");
+      wordOfTheDay = answerArr[Math.floor(Math.random() * answerArr.length)];
+    });
+  return { wordOfTheDay };
 };

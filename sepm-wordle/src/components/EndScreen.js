@@ -9,7 +9,7 @@ function EndScreen() {
       <h3>
         {gameCompleted.guessedWord ? "You guessed Correctly!" : "You failed!"}
       </h3>
-      <h1>Correct: {answer}</h1>
+      <h1>The correct word is: {answer}</h1>
       {gameCompleted.guessedWord && (
         <h3>You guessed in {currentAttempt.attempt} attempts</h3>
       )}

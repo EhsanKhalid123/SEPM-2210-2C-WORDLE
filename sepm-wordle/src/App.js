@@ -3,7 +3,7 @@ import "./App.css";
 import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import { createContext, useState } from "react";
-import { boardClean, generateGuessSet } from "./Tools";
+import { boardClean, generateGuessSet, randomlySelectAnswer } from "./Tools";
 import EndScreen from "./components/EndScreen";
 
 export const AppContext = createContext();
@@ -16,18 +16,21 @@ function App() {
   });
   const [guessSet, setGuessSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
+  const [answer, setAnswer] = useState("");
   const [gameCompleted, setGameCompleted] = useState({
     gameCompleted: false,
     guessedWord: false,
   });
 
-  const answer = "RIGHT";
-
   useEffect(() => {
     generateGuessSet().then((words) => {
       setGuessSet(words.guessSet);
     });
-  });
+    randomlySelectAnswer().then((words) => {
+      // answer = words.wordOfTheDay;
+      setAnswer(words.wordOfTheDay);
+    });
+  }, []);
 
   const onPickLetter = (keyval) => {
     if (currentAttempt.letterPosition > 4) return;
@@ -53,12 +56,14 @@ function App() {
   const onEnterClick = () => {
     if (currentAttempt.letterPosition !== 5) return;
 
-    let currentWord = "";
+    let currWord = "";
     for (let i = 0; i < 5; i++) {
-      currentWord += board[currentAttempt.attempt][i];
+      currWord += board[currentAttempt.attempt][i];
     }
+    console.log(currWord);
+    console.log(answer);
 
-    if (guessSet.has(currentWord.toLowerCase())) {
+    if (guessSet.has(currWord.toLowerCase())) {
       setCurrentAttempt({
         attempt: currentAttempt.attempt + 1,
         letterPosition: 0,
@@ -67,13 +72,13 @@ function App() {
       alert("Word not in Word List");
     }
 
-    if (currentWord == answer) {
-      setGameCompleted({gameCompleted: true, guessedWord: true})
+    if (currWord.toLowerCase() === answer.toLowerCase()) {
+      setGameCompleted({ gameCompleted: true, guessedWord: true });
       return;
     }
 
-    if (currentAttempt.attempt === 5){
-      setGameCompleted({gameCompleted: true, guessedWord: false})
+    if (currentAttempt.attempt === 5) {
+      setGameCompleted({ gameCompleted: true, guessedWord: false });
     }
   };
   return (
