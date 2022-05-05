@@ -1,12 +1,10 @@
-import React from "react";
-{
-  /**
-    component for letter to keep track of things
-*/
-}
-function Letter({ letterPosition, attemptNumber }) {
-    const letter = board[attemptNumber][letterPosition];
-  return <div className="letter">Letter</div>;
+import React, { useContext } from "react";
+import { AppContext } from "../App";
+
+function Letter({ letterPosition, attemptValue }) {
+  const { board } = useContext(AppContext);
+  const letter = board[attemptValue][letterPosition];
+  return <div className="letter"> {letter}</div>;
 }
 
 export default Letter;
