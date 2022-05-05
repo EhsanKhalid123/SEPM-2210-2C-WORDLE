@@ -15,7 +15,7 @@ function App() {
         <h1>SEPM Wordle</h1>
       </nav>
       <AppContext.Provider value={{ board, setBoard }}>
-        <div className="game">
+        <div className="site">
           <Board />
           <Keyboard />
         </div>
