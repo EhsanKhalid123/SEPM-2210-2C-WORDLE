@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import { createContext, useState } from "react";
-import { boardClean } from "./BoardMatrix";
+import { boardClean, generateGuessSet } from "./Tools";
 
 export const AppContext = createContext();
 
@@ -13,8 +13,15 @@ function App() {
     attempt: 0,
     letterPosition: 0,
   });
+  const [guessSet, setGuessSet] = useState(new Set());
 
   const answer = "RIGHT";
+
+  useEffect(() => {
+    generateGuessSet().then((words) => {
+    setGuessSet(words.guessSet);
+    });
+  });
 
   const onPickLetter = (keyval) => {
     if (currentAttempt.letterPosition > 4) return;
@@ -39,10 +46,17 @@ function App() {
   };
   const onEnterClick = () => {
     if (currentAttempt.letterPosition !== 5) return;
-    setCurrentAttempt({
-      attempt: currentAttempt.attempt + 1,
-      letterPosition: 0,
-    });
+
+    let currentWord = "";
+    for (let i = 0; i < 5; i++) {
+      currentWord += board[currentAttempt.attempt][i];
+    }
+
+    if (guessSet.has(currentWord.toLowerCase())) {
+      setCurrentAttempt({ attempt: currentAttempt.attempt + 1, letterPosition: 0 });
+    } else {
+      alert("NO");
+    }
   };
   return (
     <div className="App">
