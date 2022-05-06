@@ -6,12 +6,12 @@ function EndScreen() {
     useContext(AppContext);
   return (
     <div className="gameOver">
-      <h3>
-        {gameCompleted.guessedWord ? "You guessed Correctly!" : "You failed!"}
-      </h3>
-      <h1>The correct word is: {answer}</h1>
+      <h1>
+        {gameCompleted.guessedWord ? "YOU GUESSED CORRECTLY!" : "YOU FAILED! GET A JOB!"}
+      </h1>
+      <h3>The correct word is: "{answer}"</h3>
       {gameCompleted.guessedWord && (
-        <h3>You guessed in {currentAttempt.attempt} attempts</h3>
+        <h4>You guessed in {currentAttempt.attempt} attempt(s)</h4>
       )}
     </div>
   );

@@ -1,4 +1,3 @@
 crane
 maple
 smart
-drugs

@@ -66,11 +66,11 @@ nav h1 {
 }
 
 #correct {
-  background-color: #618B55;
+  background-color: #618b55;
 }
 
 #partial {
-  background-color: #B1A04C;
+  background-color: #b1a04c;
 }
 
 #incorrect {
@@ -128,4 +128,8 @@ nav h1 {
 
 #disabled {
   background-color: #222222;
+}
+
+.gameOver {
+  font-family: Arial, Helvetica, sans-serif;
 }
