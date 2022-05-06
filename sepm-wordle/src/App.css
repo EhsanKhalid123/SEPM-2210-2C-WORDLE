@@ -60,7 +60,8 @@ nav h1 {
 .letter {
   flex: 33%;
   height: 100%;
-  border: 1px solid #3a3a3c;
+  border: 1.5px solid #3a3a3c;
+  border-radius: 5px;
   margin: 5px;
   display: grid;
   place-items: center;
