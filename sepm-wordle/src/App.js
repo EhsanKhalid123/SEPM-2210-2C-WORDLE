@@ -140,33 +140,33 @@ function App() {
     }
   };
 
-  const r = document.querySelector(":root");
+  // const r = document.querySelector(":root");
 
-  const setHighContrastDark = () => {
-    r.style.setProperty("--colour-correct", "#e5804a");
-    r.style.setProperty("--colour-partial", "#92bef4");
-    r.style.setProperty("--background", "#121213");
-    r.style.setProperty("--textColour", "white");
-  };
+  // const setHighContrastDark = () => {
+  //   r.style.setProperty("--colour-correct", "#e5804a");
+  //   r.style.setProperty("--colour-partial", "#92bef4");
+  //   r.style.setProperty("--background", "#121213");
+  //   r.style.setProperty("--textColour", "white");
+  // };
 
-  const setDarkMode = () => {
-    r.style.setProperty("--colour-correct", "#618b55");
-    r.style.setProperty("--colour-partial", "#b1a04c");
-    r.style.setProperty("--background", "#121213");
-    r.style.setProperty("--textColour", "white");
-  };
+  // const setDarkMode = () => {
+  //   r.style.setProperty("--colour-correct", "#618b55");
+  //   r.style.setProperty("--colour-partial", "#b1a04c");
+  //   r.style.setProperty("--background", "#121213");
+  //   r.style.setProperty("--textColour", "white");
+  // };
 
   return (
     <div className="App">
       <nav>
         <h1>wordo</h1>
       </nav>
-      <button id="button" onClick={setHighContrastDark}>
+      {/* <button id="button" onClick={setHighContrastDark}>
         High Contrast Theme
       </button>
       <button id="button" onClick={setDarkMode}>
         Normal Theme
-      </button>
+      </button> */}
 
       {/** The following values are being used by other components in the project */}
       <AppContext.Provider
