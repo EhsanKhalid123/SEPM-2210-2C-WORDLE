@@ -27,7 +27,6 @@ function App() {
       setGuessSet(words.guessSet);
     });
     randomlySelectAnswer().then((words) => {
-      // answer = words.wordOfTheDay;
       setAnswer(words.wordOfTheDay);
     });
   }, []);
