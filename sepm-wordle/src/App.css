@@ -145,7 +145,11 @@ nav h1 {
   background-color: #222222;
 }
 
-/* Styling for the end screen, just sets the font to match rest of game */
+/* Styling for the end screen, just sets the font to match rest of game
+and the styling to match the keyboard that is replaces so teh site doesnt move around */
 .endScreen {
   font-family: Arial, Helvetica, sans-serif;
+  width: 700px;
+  height: 300px;
+  margin-top: 70px;
 }
