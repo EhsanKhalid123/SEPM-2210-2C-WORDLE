@@ -5,6 +5,7 @@ import Keyboard from "./components/Keyboard";
 import { createContext, useState } from "react";
 import { boardClean, generateGuessSet, randomlySelectAnswer } from "./Tools";
 import EndScreen from "./components/EndScreen";
+import answerList from "./test-answer-list.txt";
 
 export const AppContext = createContext();
 
@@ -30,6 +31,27 @@ function App() {
       setAnswer(words.wordOfTheDay);
     });
   }, []);
+
+  window.setInterval(function () {
+    randomlySelectAnswer().then((words) => {
+      setAnswer(words.wordOfTheDay);
+    });
+  }, 60000);
+
+  // let wordOfTheDay;
+  // window.setInterval(
+  //   (function () {
+  //     fetch(answerList)
+  //       .then((response) => response.text())
+  //       .then((result) => {
+  //         const answerArr = result.split("\n");
+  //         wordOfTheDay =
+  //           answerArr[Math.floor(Math.random() * answerArr.length)];
+  //         setAnswer(wordOfTheDay);
+  //       });
+  //   },
+  //   10)
+  // );
 
   const onPickLetter = (keyval) => {
     if (currentAttempt.letterPosition > 4) return;
