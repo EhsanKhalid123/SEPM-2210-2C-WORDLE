@@ -1,5 +1,5 @@
 import guessList from "./guess-list.txt";
-import answerList from "./test-answer-list.txt";
+import answerList from "./answer-list.txt";
 
 export const boardClean = [
   ["", "", "", "", ""],

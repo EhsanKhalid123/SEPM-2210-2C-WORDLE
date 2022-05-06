@@ -36,7 +36,7 @@ function App() {
     randomlySelectAnswer().then((words) => {
       setAnswer(words.wordOfTheDay);
     });
-  }, 60000);
+  }, 8.64e+7);
 
   // let wordOfTheDay;
   // window.setInterval(
