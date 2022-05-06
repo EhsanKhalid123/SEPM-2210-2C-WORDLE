@@ -61,6 +61,7 @@ nav h1 {
   flex: 33%;
   height: 100%;
   border: 1px solid #3a3a3c;
+  border-radius: 5px;
   margin: 5px;
   display: grid;
   place-items: center;
