@@ -6,9 +6,14 @@ import { createContext, useState } from "react";
 import { boardClean, generateGuessSet, randomlySelectAnswer } from "./Tools";
 import EndScreen from "./components/EndScreen";
 import answerList from "./test-answer-list.txt";
-
+{
+  /* Allows the functions here to be called in other components */
+}
 export const AppContext = createContext();
 
+{
+  /** Set up all the constants for the app, and their default states */
+}
 function App() {
   const [board, setBoard] = useState(boardClean);
   const [currentAttempt, setCurrentAttempt] = useState({
@@ -23,6 +28,15 @@ function App() {
     guessedWord: false,
   });
 
+  {
+    /** The useEffect function here means that the function will only be able to run once
+
+  This useeffect calls the Tools.js component which splits the guess list text file into a Set. Which is more 
+  efficient to read than an array (which would be too resource intensive).
+
+  It also makes a set from the answer list. This is different to guess list as the user is able to guess ~10000 words
+  in the game, however the game will only choose from ~2000 words as an answer to the game. */
+  }
   useEffect(() => {
     generateGuessSet().then((words) => {
       setGuessSet(words.guessSet);
@@ -32,11 +46,18 @@ function App() {
     });
   }, []);
 
+  {
+    /** This allows the word of the day to refresh every 24 hours. 8.64e7 is 24 hours in miliseconds */
+  }
   window.setInterval(function () {
     randomlySelectAnswer().then((words) => {
       setAnswer(words.wordOfTheDay);
     });
-  }, 8.64e+7);
+  }, 8.64e7);
+
+  {
+    /** below is me trying to figure out how to do all of this stuff  */
+  }
 
   // let wordOfTheDay;
   // window.setInterval(
@@ -53,6 +74,9 @@ function App() {
   //   10)
   // );
 
+  {
+    /** This keeps track of where the user is on the board when they pick a letter */
+  }
   const onPickLetter = (keyval) => {
     if (currentAttempt.letterPosition > 4) return;
     const newBoard = [...board];
@@ -64,6 +88,9 @@ function App() {
     });
   };
 
+  {
+    /** This keeps track of where the user is on the board when they delete a letter */
+  }
   const onDeleteClick = () => {
     if (currentAttempt.letterPosition === 0) return;
     const newBoard = [...board];
@@ -74,6 +101,10 @@ function App() {
       letterPosition: currentAttempt.letterPosition - 1,
     });
   };
+
+  {
+    /** This keeps track of where the user is on the board when they click ENTER */
+  }
   const onEnterClick = () => {
     if (currentAttempt.letterPosition !== 5) return;
 
@@ -84,6 +115,9 @@ function App() {
     console.log(currWord);
     console.log(answer);
 
+    {
+      /** Checks if the word a user submits is valid for guessing */
+    }
     if (guessSet.has(currWord.toLowerCase())) {
       setCurrentAttempt({
         attempt: currentAttempt.attempt + 1,
@@ -93,6 +127,9 @@ function App() {
       alert("Word not in Word List");
     }
 
+    {
+      /** Set EndScreen by keeping track if the user has won or lost */
+    }
     if (currWord.toLowerCase() === answer.toLowerCase()) {
       setGameCompleted({ gameCompleted: true, guessedWord: true });
       return;
@@ -107,6 +144,7 @@ function App() {
       <nav>
         <h1>wordo</h1>
       </nav>
+      {/** The following values are being used by other components in the project */}
       <AppContext.Provider
         value={{
           board,
@@ -124,6 +162,9 @@ function App() {
         }}
       >
         <div className="site">
+          {/** Board is first, then either the endscreen or the keyboard
+           * depending on if the game is completed or not (simple boolean)
+           */}
           <Board />
           {gameCompleted.gameCompleted ? <EndScreen /> : <Keyboard />}
         </div>

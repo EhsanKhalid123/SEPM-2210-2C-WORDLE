@@ -1,6 +1,9 @@
 import guessList from "./guess-list.txt";
 import answerList from "./answer-list.txt";
 
+{
+  /** Board Matrix. The default matrix array that is empty */
+}
 export const boardClean = [
   ["", "", "", "", ""],
   ["", "", "", "", ""],
@@ -10,6 +13,9 @@ export const boardClean = [
   ["", "", "", "", ""],
 ];
 
+{
+  /** Generate guess set to check users guesses for validity */
+}
 export const generateGuessSet = async () => {
   let guessSet;
   await fetch(guessList)
@@ -22,6 +28,9 @@ export const generateGuessSet = async () => {
   return { guessSet };
 };
 
+{
+  /** Select word of the day */
+}
 export const randomlySelectAnswer = async () => {
   let wordOfTheDay;
   await fetch(answerList)

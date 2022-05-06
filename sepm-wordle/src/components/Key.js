@@ -4,6 +4,9 @@ import { AppContext } from "../App";
 function Key({ keyval, functionKey, disabled }) {
   const { onPickLetter, onDeleteClick, onEnterClick } = useContext(AppContext);
 
+  {
+    /** actions when clicking button */
+  }
   const pickLetter = () => {
     if (keyval === "ENTER") {
       onEnterClick();

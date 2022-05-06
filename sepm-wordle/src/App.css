@@ -29,6 +29,7 @@ nav h1 {
   font-size: 45px;
 }
 
+/* Calculates the dimencions of the site */
 .site {
   width: 100vw;
   height: calc(100vh - 170px);
@@ -38,6 +39,7 @@ nav h1 {
   flex-direction: column;
 }
 
+/* Styling for board as a whole  */
 .board {
   width: 450px;
   height: 600px;
@@ -46,6 +48,7 @@ nav h1 {
   flex-direction: column;
 }
 
+/* styling for row */
 .row {
   flex: 33%;
   display: flex;
@@ -53,6 +56,7 @@ nav h1 {
   margin: 5px;
 }
 
+/* Colour letter box and styling */
 .letter {
   flex: 33%;
   height: 100%;
@@ -66,24 +70,29 @@ nav h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Colour correct letter */
 #correct {
   background-color: #618b55;
 }
 
+/* Colour partial letter */
 #partial {
   background-color: #b1a04c;
 }
 
+/* Colour incorrect letter */
 #incorrect {
   background-color: #3a393c;
 }
 
+/* Style keyboard area */
 .keyboard {
   width: 700px;
   height: 300px;
   margin-top: 70px;
 }
 
+/* Sets styling for first row of keyboard */
 .firstLine {
   flex: 33%;
   display: flex;
@@ -93,6 +102,7 @@ nav h1 {
   margin: 2px;
 }
 
+/* Sets styling for second row of keyboard */
 .secondLine {
   flex: 33%;
   display: flex;
@@ -101,6 +111,7 @@ nav h1 {
   margin: 2px;
 }
 
+/* Sets styling for third row of keyboard */
 .thirdLine {
   flex: 33%;
   display: flex;
@@ -109,6 +120,7 @@ nav h1 {
   margin: 2px;
 }
 
+/* Sets the styling for the keys on virtual keyboard */
 .key {
   width: 40px;
   height: 50px;
@@ -123,14 +135,17 @@ nav h1 {
   cursor: pointer;
 }
 
+/* Makes sure that function key is bigger than letters */
 #functionKey {
   width: 100px;
 }
 
+/* The colour of the keys on keyboard that are no longer in the word to help user */
 #disabled {
   background-color: #222222;
 }
 
-.gameOver {
+/* Styling for the end screen, just sets the font to match rest of game */
+.endScreen {
   font-family: Arial, Helvetica, sans-serif;
 }
