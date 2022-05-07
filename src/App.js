@@ -10,6 +10,8 @@ function App() {
   const [letterBoard, setLetterBoard] = useState(boardMatrix);
   const [presentAttempt, setPresentAttempt] = useState({ attempt: 0, tilePosition: 0 });
 
+  const correctWord = "RIGHT";
+
   const onPickLetter = (letterValue) => {
     if (presentAttempt.tilePosition > 4) {
       return;
@@ -44,7 +46,7 @@ function App() {
           Wordle
         </h1>
       </nav>
-      <AppContext.Provider value={{ letterBoard, setLetterBoard, presentAttempt, setPresentAttempt, onPickLetter, onEnterButton, onDeleteLetter }}>
+      <AppContext.Provider value={{ letterBoard, setLetterBoard, presentAttempt, setPresentAttempt, onPickLetter, onEnterButton, onDeleteLetter, correctWord }}>
         <div className='game'>
           <LetterBoard />
         </div>

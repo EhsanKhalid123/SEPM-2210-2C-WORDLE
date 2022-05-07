@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  /* background-color: #121212; */
+  background-color: #121212;
   /* width: 100vw;
   height: 100vh; */
   /* display: flex; */
@@ -16,7 +16,9 @@ nav {
   height: 60px;
   width: 100%;
   margin: 0;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
+  border-bottom: 2px solid #3a3a3c;
+  border-radius: 300px;
   display: grid;
   place-items: center;
 }
@@ -24,10 +26,12 @@ nav {
 nav h1 {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
-  /* color: white; */
-  color: black;
+  color: white;
+  /* color: black; */
   font-size: 45px;
 }
+
+/* Calculates the dimencions of the site */
 .game {
   width: 100vw;
   height: calc(100vh - 170px);
@@ -37,14 +41,18 @@ nav h1 {
   flex-direction: column;
 }
 
+/* Styling for board as a whole  */
 .board {
   width: 450px;
-  height: 550px;
-  border: 1px solid black;
+  /* height: 550px;
+  border: 1px solid black; */
+  height: 600px;
+  border: 1px solid #121213;
   display: flex;
   flex-direction: column;
 }
 
+/* styling for row */
 .row {
   flex: 33%;
   display: flex;
@@ -52,78 +60,95 @@ nav h1 {
   margin: 5px;
 }
 
+/* Colour letter box and styling */
 .tile {
   flex: 33%;
   height: 100%;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
+  border: 1.5px solid #3a3a3c;
+  border-radius: 5px;
   margin: 5px;
   display: grid;
   place-items: center;
   font-size: 30px;
-  font-weight: bolder;
-  /* color: white; */
-  color: black;
+  font-weight: bold;
+  color: white;
+  /* color: black; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Colour correct letter */
 #correct {
   background-color: #528d4e;
 }
 
+/* Colour partial letter */
 #almost {
   background-color: #b49f39;
 }
 
+/* Colour incorrect letter */
 #error {
   background-color: #3a393c;
 }
 
+/* Style keyboard area */
 .keyboard {
   width: 700px;
   height: 300px;
   margin-top: 60px;
 }
 
+/* Sets styling for first row of keyboard */
 .line1 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   display: flex;
   justify-content: center;
-  margin: 5px;
+  margin: 2px;
 }
+
+/* Sets styling for second row of keyboard */
 .line2 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
+  margin: 2px;
 }
+
+/* Sets styling for third row of keyboard */
 .line3 {
   flex: 33%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px;
+  margin: 2px;
 }
 
+/* Sets the styling for the keys on virtual keyboard */
 .key {
-  width: 50px;
-  height: 70px;
-  margin: 5px;
-  border-radius: 4px;
+  width: 40px;
+  height: 50px;
+  margin: 4px;
+  border-radius: 5px;
   display: grid;
   place-items: center;
-  font-size: 20px;
+  font-size: 17px;
   background-color: grey;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
 
+/* Makes sure that function key is bigger than letters */
 #large {
   width: 100px;
 }
+
+/* The colour of the keys on keyboard that are no longer in the word to help user */
 #disabled {
-  background-color: #3a393c;
+  /* background-color: #3a393c; */
+  background-color: #222222;
 }
