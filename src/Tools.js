@@ -23,6 +23,7 @@ export const generateGuessSet = async () => {
     .then((result) => {
       const guessArr = result.split("\n");
       guessSet = new Set(guessArr);
+      console.log(guessSet);
     });
 
   return { guessSet };
