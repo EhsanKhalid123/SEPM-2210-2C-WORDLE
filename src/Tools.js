@@ -21,7 +21,7 @@ export const generateGuessSet = async () => {
   await fetch(guessList)
     .then((response) => response.text())
     .then((result) => {
-      const guessArr = result.split("\n");
+      const guessArr = result.split("\r\n");
       guessSet = new Set(guessArr);
       console.log(guessSet);
     });
@@ -37,7 +37,7 @@ export const randomlySelectAnswer = async () => {
   await fetch(answerList)
     .then((response) => response.text())
     .then((result) => {
-      const answerArr = result.split("\n");
+      const answerArr = result.split("\r\n");
       wordOfTheDay = answerArr[Math.floor(Math.random() * answerArr.length)];
     });
   return { wordOfTheDay };
