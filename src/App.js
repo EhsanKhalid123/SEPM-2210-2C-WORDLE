@@ -145,15 +145,12 @@ function App() {
   const setHighContrastDark = () => {
     r.style.setProperty("--colour-correct", "#e5804a");
     r.style.setProperty("--colour-partial", "#92bef4");
-    r.style.setProperty("--background", "#121213");
-    r.style.setProperty("--textColour", "white");
   };
 
   const setDarkMode = () => {
     r.style.setProperty("--colour-correct", "#618b55");
     r.style.setProperty("--colour-partial", "#b1a04c");
-    r.style.setProperty("--background", "#121213");
-    r.style.setProperty("--textColour", "white");
+
   };
 
   return (
