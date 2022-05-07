@@ -45,23 +45,23 @@ function OnScreenKeyboard() {
     return (
         <div className="keyboard" onKeyDown={manageKeyboard}>
 
-            <div className="line1">{keyboardRow1.map((key) => {
+            {/* <div className="line1">{keyboardRow1.map((key) => {
                 return (
                     <KeyboardLetters letterValue={key} />
                 );
 
             })}
-            </div>
+            </div> */}
 
-            <div className="line2">{keyboardRow2.map((key) => {
+            {/* <div className="line2">{keyboardRow2.map((key) => {
                 return (
                     <KeyboardLetters letterValue={key} />
                 );
 
             })}
-            </div>
+            </div> */}
 
-            <div className="line3"><KeyboardLetters letterValue={"ENTER"} largeLetter />
+            {/* <div className="line3"><KeyboardLetters letterValue={"ENTER"} largeLetter />
             {keyboardRow3.map((key) => {
                 
                 return (
@@ -70,7 +70,7 @@ function OnScreenKeyboard() {
 
             })}
                 <KeyboardLetters letterValue={"DELETE"} largeLetter />
-            </div>
+            </div> */}
 
         </div>
 
