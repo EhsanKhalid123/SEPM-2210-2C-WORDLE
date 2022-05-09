@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## The following sources were used to help build this project:
+- https://kennethscoggins.medium.com/how-to-build-wordle-using-reactjs-and-about-200-lines-of-sloppy-code-3da3ef47013f
+- https://dev.to/krisgardiner/build-wordle-in-react-1hkb
+- https://www.youtube.com/watch?v=WDTNwmXUz2c
+- https://www.youtube.com/watch?v=oTVFno-IZVc
+- https://www.youtube.com/watch?v=t_omcJmOQ_k
+- https://bestofreactjs.com/repo/hannahcode-wordle
+- https://github.com/cwackerfuss/react-wordle
