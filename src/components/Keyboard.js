@@ -61,7 +61,7 @@ function Keyboard() {
   }
   return (
     <div className="keyboard" onKeyDown={handleKeyboard}>
-      <div className="firstLine">
+      {/* <div className="firstLine">
         {keys1.map((key) => {
           return <Key keyval={key} disabled={disabledLetters.includes(key)} />;
         })}
@@ -77,7 +77,7 @@ function Keyboard() {
           return <Key keyval={key} disabled={disabledLetters.includes(key)} />;
         })}
         <Key keyval={"ENTER"} functionKey />
-      </div>
+      </div> */}
     </div>
   );
 }
