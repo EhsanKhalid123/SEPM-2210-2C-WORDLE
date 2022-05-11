@@ -4,7 +4,7 @@ import "./index.css";
 import Board from "./components/Board";
 import Keyboard from "./components/Keyboard";
 import { createContext, useState } from "react";
-import { boardClean, generateGuessSet, randomlySelectAnswer } from "./Tools";
+import { boardClean, generateGuessSet, getWordOfTheDay } from "./Tools";
 import EndScreen from "./components/EndScreen";
 {
   /* Allows the functions here to be called in other components */
@@ -41,7 +41,7 @@ function App() {
     generateGuessSet().then((words) => {
       setGuessSet(words.guessSet);
     });
-    randomlySelectAnswer().then((words) => {
+    getWordOfTheDay().then((words) => {
       setAnswer(words.wordOfTheDay);
     });
   }, []);
@@ -49,11 +49,11 @@ function App() {
   {
     /** This allows the word of the day to refresh every 24 hours. 8.64e7 is 24 hours in miliseconds */
   }
-  window.setInterval(function () {
-    randomlySelectAnswer().then((words) => {
-      setAnswer(words.wordOfTheDay);
-    });
-  }, 8.64e7);
+  // window.setInterval(function () {
+  //   randomlySelectAnswer().then((words) => {
+  //     setAnswer(words.wordOfTheDay);
+  //   });
+  // }, 8.64e7);
 
   {
     /** below is me trying to figure out how to do all of this stuff  */

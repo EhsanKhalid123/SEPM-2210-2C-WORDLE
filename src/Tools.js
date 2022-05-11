@@ -31,7 +31,16 @@ export const generateGuessSet = async () => {
 {
   /** Select word of the day */
 }
-export const randomlySelectAnswer = async () => {
+export const getWordOfTheDay = async () => {
+  const dateStart = new Date("5/11/2022");
+  const current = new Date();
+  const dateCurrent = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
+
+  console.log(dateStart);
+  console.log(dateCurrent);
+
   let wordOfTheDay;
   await fetch(answerList)
     .then((response) => response.text())
