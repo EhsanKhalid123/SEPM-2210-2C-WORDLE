@@ -2,14 +2,15 @@ import React, { useContext } from "react";
 import { AppContext } from "../App";
 
 function EndScreen() {
-  const { gameCompleted, setGameCompleted, answer, currentAttempt } =
-    useContext(AppContext);
+  const { gameCompleted, answer, currentAttempt } = useContext(AppContext);
 
+  var midnight = new Date();
+  midnight.setHours(24, 0, 0, 0);
+  var midnightSeconds = Math.floor(
+    (midnight.getTime() - new Date().getTime()) / 1000
+  );
 
-  
-
-
-  const [counter, setCounter] = React.useState(60);
+  const [counter, setCounter] = React.useState(midnightSeconds);
 
   React.useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
@@ -27,13 +28,15 @@ function EndScreen() {
           : "YOU FAILED! GET A JOB!"}
       </h1>
       <h3>The correct word is: "{answer}"</h3>
+
       {gameCompleted.guessedWord && (
         <h4>
           You guessed in {currentAttempt.attempt} attempt(s)
-          <h4>
-            {" "}
-            <div>Next word of the day available in: {counter}</div>
-          </h4>
+          <h3>
+            <div id="countdown">
+              Next word of the day available in: {counter}
+            </div>
+          </h3>
         </h4>
       )}
     </div>
