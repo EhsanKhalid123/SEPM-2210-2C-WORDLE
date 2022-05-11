@@ -10,8 +10,21 @@ function EndScreen() {
     (midnight.getTime() - new Date().getTime()) / 1000
   );
 
-  const [counter, setCounter] = React.useState(midnightSeconds);
+  const format = (time) => {
+    //convert seconds into hours and take whole part
+    const hours = Math.floor(time / 60 / 60) % 60;
 
+    // Convert seconds into minutes and take the whole part
+    const minutes = Math.floor((time / 60) % 60);
+
+    // Get the seconds left after converting minutes
+    const seconds = time % 60;
+
+    //Return combined values as string in format mm:ss
+    return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+  };
+
+  const [counter, setCounter] = React.useState(midnightSeconds);
   React.useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
@@ -34,7 +47,9 @@ function EndScreen() {
           You guessed in {currentAttempt.attempt} attempt(s)
           <h3>
             <div id="countdown">
-              Next word of the day available in: {counter}
+              <div>
+                The next Word Of The Day will arrive in: {format(counter)}
+              </div>
             </div>
           </h3>
         </h4>
