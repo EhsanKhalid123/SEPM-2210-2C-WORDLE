@@ -20,7 +20,7 @@ function EndScreen() {
     // Get the seconds left after converting minutes
     const seconds = time % 60;
 
-    //Return combined values as string in format mm:ss
+    //Return combined values as string in format
     return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
   };
 
