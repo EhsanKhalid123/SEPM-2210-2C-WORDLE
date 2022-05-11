@@ -32,21 +32,24 @@ export const generateGuessSet = async () => {
   /** Select word of the day */
 }
 export const getWordOfTheDay = async () => {
-  const dateStart = new Date("5/11/2022");
+  /**
+   * set date at initial value, then get current date
+   * find the difference in days and use that as indicator
+   * to fetch word of list so it updates every day
+   */
+  const start = new Date("5/11/2022");
   const current = new Date();
-  const dateCurrent = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
+  current.setHours(0, 0, 0, 0);
+  const diffInDays = Math.abs(current - start) / (1000 * 60 * 60 * 24);
 
-  console.log(dateStart);
-  console.log(dateCurrent);
+  console.log(diffInDays);
 
   let wordOfTheDay;
   await fetch(answerList)
     .then((response) => response.text())
     .then((result) => {
       const answerArr = result.split("\n");
-      wordOfTheDay = answerArr[Math.floor(Math.random() * answerArr.length)];
+      wordOfTheDay = answerArr[diffInDays];
     });
   return { wordOfTheDay };
 };
