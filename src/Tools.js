@@ -42,7 +42,7 @@ export const getWordOfTheDay = async () => {
   current.setHours(0, 0, 0, 0);
   const diffInDays = Math.abs(current - start) / (1000 * 60 * 60 * 24);
 
-  console.log(diffInDays);
+
 
   let wordOfTheDay;
   await fetch(answerList)
@@ -51,5 +51,5 @@ export const getWordOfTheDay = async () => {
       const answerArr = result.split("\n");
       wordOfTheDay = answerArr[diffInDays];
     });
-  return { wordOfTheDay };
+  return { wordOfTheDay, diffInDays};
 };

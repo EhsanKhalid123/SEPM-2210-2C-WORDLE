@@ -8,7 +8,8 @@ import {
 } from "react-share";
 
 function EndScreen() {
-  const { gameCompleted, answer, currentAttempt } = useContext(AppContext);
+  const { gameCompleted, answer, currentAttempt, twitterGrid, diffInDays } =
+    useContext(AppContext);
 
   var midnight = new Date();
   midnight.setHours(24, 0, 0, 0);
@@ -35,6 +36,15 @@ function EndScreen() {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
+  const wordoTitle = "Wordo Number: " + diffInDays.toString() + "\n";
+
+  // let emojiGrid = "";
+  // let gLen = twitterGrid.length;
+  // for (let i = 0; i < gLen; i + 2) {
+  //   if (twitterGrid[i] === "correct") {
+  //     emojiGrid += "yo";
+  //   }
+  // }
   {
     /** Set gameover screen, can be either win or lose. Very basic, but does the trick
         and replaces the keyboard */
@@ -45,22 +55,23 @@ function EndScreen() {
         {gameCompleted.guessedWord
           ? "YOU GUESSED CORRECTLY!"
           : "YOU FAILED! GET A JOB!"}
+        <br></br>
+        <div id="secondEnd">The correct word is: "{answer.toUpperCase()}"</div>
       </h1>
-      <h2>The correct word is: "{answer.toUpperCase()}"</h2>
-
       {gameCompleted.guessedWord && (
         <h4>
           You guessed in {currentAttempt.attempt} attempt(s)
           <h3>
             <div id="countdown">
               <div>
-                The next Word Of The Day will arrive in: {format(counter)}
+                The next Word Of The Day will arrive in: <br></br>
+                {format(counter)}
               </div>
             </div>
           </h3>
           <TwitterShareButton
-            url="google.com"
-            title="yeye"
+            url={twitterGrid}
+            title={wordoTitle}
             className="shareBtn col-md-1 col-sm-1 col-xs-1"
           >
             {" "}

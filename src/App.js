@@ -27,6 +27,8 @@ function App() {
     gameCompleted: false,
     guessedWord: false,
   });
+  const twitterGrid = [];
+  const [diffInDays, setDiffInDays] = useState("");
 
   {
     /** The useEffect function here means that the function will only be able to run once
@@ -43,9 +45,10 @@ function App() {
     });
     getWordOfTheDay().then((words) => {
       setAnswer(words.wordOfTheDay);
+      setDiffInDays(words.diffInDays);
     });
   }, []);
-
+  console.log(diffInDays);
   {
     /** This allows the word of the day to refresh every 24 hours. 8.64e7 is 24 hours in miliseconds */
   }
@@ -150,7 +153,6 @@ function App() {
   const setDarkMode = () => {
     r.style.setProperty("--colour-correct", "#618b55");
     r.style.setProperty("--colour-partial", "#b1a04c");
-
   };
 
   return (
@@ -180,6 +182,8 @@ function App() {
           setDisabledLetters,
           setGameCompleted,
           gameCompleted,
+          twitterGrid,
+          diffInDays,
         }}
       >
         <div className="site">

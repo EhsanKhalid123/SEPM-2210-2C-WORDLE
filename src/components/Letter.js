@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 
 function Letter({ letterPosition, attemptValue }) {
-  const { board, answer, currentAttempt, setDisabledLetters } =
+  const { board, answer, currentAttempt, setDisabledLetters, twitterGrid } =
     useContext(AppContext);
   {
     /** Get the current letter that is on the board */
@@ -20,11 +20,19 @@ function Letter({ letterPosition, attemptValue }) {
     !correct && letter !== "" && answer.toUpperCase().includes(letter);
 
   {
-    /** Sets the latterState one of three ways */
+    /** Sets the letterState one of three ways */
   }
   const letterState =
     currentAttempt.attempt > attemptValue &&
     (correct ? "correct" : partial ? "partial" : "incorrect");
+
+  if (currentAttempt.attempt > attemptValue) {
+    correct
+      ? twitterGrid.push('&#129001;')
+      : partial
+      ? twitterGrid.push("partial")
+      : twitterGrid.push("incorrect");
+  }
 
   {
     /** Grey out the keyboard letters that are not in the word from guesses */
