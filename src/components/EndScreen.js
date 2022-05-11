@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
 import { AppContext } from "../App";
-import { TwitterShareButton } from "react-share";
+import {
+  ShareButtons,
+  ShareCounts,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share";
 
 function EndScreen() {
   const { gameCompleted, answer, currentAttempt } = useContext(AppContext);
@@ -41,7 +46,7 @@ function EndScreen() {
           ? "YOU GUESSED CORRECTLY!"
           : "YOU FAILED! GET A JOB!"}
       </h1>
-      <h3>The correct word is: "{answer}"</h3>
+      <h2>The correct word is: "{answer.toUpperCase()}"</h2>
 
       {gameCompleted.guessedWord && (
         <h4>
@@ -53,6 +58,17 @@ function EndScreen() {
               </div>
             </div>
           </h3>
+          <TwitterShareButton
+            url="google.com"
+            title="yeye"
+            className="shareBtn col-md-1 col-sm-1 col-xs-1"
+          >
+            {" "}
+            <TwitterIcon size={32} round={true} />
+            <a className="twitter">
+              <i className="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </TwitterShareButton>
         </h4>
       )}
     </div>
