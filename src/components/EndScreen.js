@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 import {
   FacebookIcon,
@@ -10,8 +10,15 @@ import {
 } from "react-share";
 
 function EndScreen() {
-  const { gameCompleted, answer, currentAttempt, diffInDays } =
-    useContext(AppContext);
+  const {
+    gameCompleted,
+    answer,
+    currentAttempt,
+    diffInDays,
+    board,
+    emojiGrid,
+    setEmojiGrid,
+  } = useContext(AppContext);
 
   var midnight = new Date();
   midnight.setHours(24, 0, 0, 0);
@@ -44,6 +51,34 @@ function EndScreen() {
     "I won in " + currentAttempt.attempt.toString() + " attempt[s]";
 
   const combined = wordoTitle + shareText;
+
+  useEffect(() => {
+    for (var i = 0; i < board.length; i++) {
+      if (board[i] === "") {
+        return;
+      }
+      var boardy = board[i];
+      for (var j = 0; j < boardy.length; j++) {
+        if (boardy[j] === "") {
+          return;
+        }
+        console.log("board[" + i + "][" + j + "] = " + boardy[j]);
+        if (board[i][j] === answer.toUpperCase()[j]) {
+          setEmojiGrid((emojiGrid) => [...emojiGrid, "green"]);
+        } else if (
+          answer.toUpperCase().includes(board[i][j]) &&
+          board[i][j] != "" &&
+          board[i][j] != answer.toUpperCase()[j]
+        ) {
+          setEmojiGrid((emojiGrid) => [...emojiGrid, "amber"]);
+        } else {
+          setEmojiGrid((emojiGrid) => [...emojiGrid, "grey"]);
+        }
+      }
+      console.log("\n");
+    }
+    
+  }, []);
 
   // let emojiGrid = "";
   // let gLen = twitterGrid.length;
