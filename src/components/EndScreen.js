@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../App";
+import Parser from "html-react-parser";
 import {
   FacebookIcon,
   FacebookShareButton,
-  ShareButtons,
-  ShareCounts,
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
@@ -19,7 +18,7 @@ function EndScreen() {
     emojiGrid,
     setEmojiGrid,
   } = useContext(AppContext);
-
+  const [emoji, setEmoji] = useState("");
   var midnight = new Date();
   midnight.setHours(24, 0, 0, 0);
   var midnightSeconds = Math.floor(
@@ -45,48 +44,55 @@ function EndScreen() {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
-  const wordoTitle = "Wordo: " + diffInDays.toString() + "\r\n" + "\r\n";
+  const wordoTitleTwt = "\r\n" + "\r\n" + "WORDO: " + diffInDays.toString();
 
-  const shareText =
-    "I won in " + currentAttempt.attempt.toString() + " attempt[s]";
+  const wordoTitleFb = "WORDO: " + diffInDays.toString() + "\r\n" + "\r\n";
+  const shareFbTxt = "I completed the WORDO in " + currentAttempt.attempt.toString() + "attempt[s]";
 
-  const combined = wordoTitle + shareText;
+  const fbMessage = wordoTitleFb + shareFbTxt;
 
   useEffect(() => {
     for (var i = 0; i < board.length; i++) {
-      if (board[i] === "") {
-        return;
-      }
+      // if (board[i] === "") {
+      //   return;
+      // }
       var boardy = board[i];
       for (var j = 0; j < boardy.length; j++) {
         if (boardy[j] === "") {
           return;
         }
-        console.log("board[" + i + "][" + j + "] = " + boardy[j]);
+        // console.log("board[" + i + "][" + j + "] = " + boardy[j]);
         if (board[i][j] === answer.toUpperCase()[j]) {
-          setEmojiGrid((emojiGrid) => [...emojiGrid, "green"]);
+          setEmojiGrid((emojiGrid) => [...emojiGrid, "&#129001;"]);
         } else if (
           answer.toUpperCase().includes(board[i][j]) &&
           board[i][j] != "" &&
           board[i][j] != answer.toUpperCase()[j]
         ) {
-          setEmojiGrid((emojiGrid) => [...emojiGrid, "amber"]);
+          setEmojiGrid((emojiGrid) => [...emojiGrid, "&#129000;"]);
         } else {
-          setEmojiGrid((emojiGrid) => [...emojiGrid, "grey"]);
+          setEmojiGrid((emojiGrid) => [...emojiGrid, "&#11035;;"]);
         }
       }
-      console.log("\n");
+      // console.log("\n");
     }
-    
   }, []);
 
-  // let emojiGrid = "";
-  // let gLen = twitterGrid.length;
-  // for (let i = 0; i < gLen; i + 2) {
-  //   if (twitterGrid[i] === "correct") {
-  //     emojiGrid += "yo";
-  //   }
-  // }
+  useEffect(() => {
+    const half = Math.ceil([...emojiGrid].length / 2);
+    const emoji = [...emojiGrid].slice(0, half);
+    var emojiString = emoji.toString();
+    // console.log(emojiString);
+    emojiString = emojiString.replace(/,/g, " ");
+    emojiString = emojiString.replace(/(?!$|\n)([^\n]{50}(?!\n))/g, "$1\n");
+    emojiString = emojiString.replace(/&#11035;;/g, "&#11035;");
+    // console.log(emojiString);
+    // emoji = emojiString;
+    setEmoji(emojiString);
+  });
+
+  // console.log(emoji);
+
   {
     /** Set gameover screen, can be either win or lose. Very basic, but does the trick
         and replaces the keyboard */
@@ -112,7 +118,8 @@ function EndScreen() {
             </div>
           </h3>
           <TwitterShareButton
-            url={combined}
+            title={Parser(emoji)}
+            url={wordoTitleTwt}
             className="shareBtn col-md-1 col-sm-1 col-xs-1"
           >
             {" "}
@@ -122,8 +129,8 @@ function EndScreen() {
             </a>
           </TwitterShareButton>
           <FacebookShareButton
-            url="https://www.rmit.edu.au/"
-            quote={combined}
+            url="www.google.com"
+            quote={fbMessage}
             hashtag="wordo"
             className="shareBtn col-md-1 col-sm-1 col-xs-1"
           >
