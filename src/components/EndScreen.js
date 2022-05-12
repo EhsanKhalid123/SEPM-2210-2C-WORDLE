@@ -77,8 +77,7 @@ function EndScreen() {
             </div>
           </h3>
           <TwitterShareButton
-            url={shareText}
-            title={wordoTitle}
+            url={combined}
             className="shareBtn col-md-1 col-sm-1 col-xs-1"
           >
             {" "}
