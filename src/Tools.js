@@ -53,3 +53,5 @@ export const getWordOfTheDay = async () => {
     });
   return { wordOfTheDay, diffInDays};
 };
+
+

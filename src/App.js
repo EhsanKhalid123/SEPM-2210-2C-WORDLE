@@ -28,6 +28,7 @@ function App() {
     guessedWord: false,
   });
   const [diffInDays, setDiffInDays] = useState("");
+  const [emojiGrid, setEmojiGrid] = useState([]);
 
   {
     /** The useEffect function here means that the function will only be able to run once
@@ -47,7 +48,7 @@ function App() {
       setDiffInDays(words.diffInDays);
     });
   }, []);
-  console.log(diffInDays);
+
   {
     /** This allows the word of the day to refresh every 24 hours. 8.64e7 is 24 hours in miliseconds */
   }
@@ -114,8 +115,6 @@ function App() {
     for (let i = 0; i < 5; i++) {
       currWord += board[currentAttempt.attempt][i];
     }
-    console.log(currWord);
-    console.log(answer);
 
     {
       /** Checks if the word a user submits is valid for guessing */
@@ -182,8 +181,9 @@ function App() {
           setDisabledLetters,
           setGameCompleted,
           gameCompleted,
-
+          emojiGrid,
           diffInDays,
+          setEmojiGrid,
         }}
       >
         <div className="site">
