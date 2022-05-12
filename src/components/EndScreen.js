@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { AppContext } from "../App";
 import {
+  FacebookIcon,
+  FacebookShareButton,
   ShareButtons,
   ShareCounts,
   TwitterIcon,
@@ -8,7 +10,7 @@ import {
 } from "react-share";
 
 function EndScreen() {
-  const { gameCompleted, answer, currentAttempt, twitterGrid, diffInDays } =
+  const { gameCompleted, answer, currentAttempt, diffInDays } =
     useContext(AppContext);
 
   var midnight = new Date();
@@ -36,9 +38,12 @@ function EndScreen() {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
-  const wordoTitle = "Wordo Number: " + diffInDays.toString() + "\r\n" + "\r\n";
+  const wordoTitle = "Wordo: " + diffInDays.toString() + "\r\n" + "\r\n";
 
-  const shareText = "I got the correct Wordo in " + currentAttempt.attempt.toString() + " attempt[s]";
+  const shareText =
+    "I won in " + currentAttempt.attempt.toString() + " attempt[s]";
+
+  const combined = wordoTitle + shareText;
 
   // let emojiGrid = "";
   // let gLen = twitterGrid.length;
@@ -82,6 +87,14 @@ function EndScreen() {
               <i className="fa fa-twitter" aria-hidden="true"></i>
             </a>
           </TwitterShareButton>
+          <FacebookShareButton
+            url="https://www.rmit.edu.au/"
+            quote={combined}
+            hashtag="wordo"
+            className="shareBtn col-md-1 col-sm-1 col-xs-1"
+          >
+            <FacebookIcon id="fbook" size={32} round={true} />
+          </FacebookShareButton>
         </h4>
       )}
     </div>

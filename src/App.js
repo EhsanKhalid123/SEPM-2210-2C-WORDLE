@@ -27,7 +27,6 @@ function App() {
     gameCompleted: false,
     guessedWord: false,
   });
-  const [twitterGrid, setTwitterGrid] = useState([]);
   const [diffInDays, setDiffInDays] = useState("");
 
   {
@@ -143,7 +142,6 @@ function App() {
       setGameCompleted({ gameCompleted: true, guessedWord: false });
     }
   };
-  
 
   const r = document.querySelector(":root");
 
@@ -184,9 +182,8 @@ function App() {
           setDisabledLetters,
           setGameCompleted,
           gameCompleted,
-          twitterGrid,
+
           diffInDays,
-          setTwitterGrid,
         }}
       >
         <div className="site">
