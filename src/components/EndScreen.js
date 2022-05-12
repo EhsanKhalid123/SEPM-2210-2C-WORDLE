@@ -36,7 +36,9 @@ function EndScreen() {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
-  const wordoTitle = "Wordo Number: " + diffInDays.toString() + "\n";
+  const wordoTitle = "Wordo Number: " + diffInDays.toString() + "\r\n" + "\r\n";
+
+  const shareText = "I got the correct Wordo in " + currentAttempt.attempt.toString() + " attempt[s]";
 
   // let emojiGrid = "";
   // let gLen = twitterGrid.length;
@@ -60,7 +62,7 @@ function EndScreen() {
       </h1>
       {gameCompleted.guessedWord && (
         <h4>
-          You guessed in {currentAttempt.attempt} attempt(s)
+          You guessed in {currentAttempt.attempt} attempt[s]
           <h3>
             <div id="countdown">
               <div>
@@ -70,7 +72,7 @@ function EndScreen() {
             </div>
           </h3>
           <TwitterShareButton
-            url={twitterGrid}
+            url={shareText}
             title={wordoTitle}
             className="shareBtn col-md-1 col-sm-1 col-xs-1"
           >

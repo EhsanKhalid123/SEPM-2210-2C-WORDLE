@@ -2,8 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 
 function Letter({ letterPosition, attemptValue }) {
-  const { board, answer, currentAttempt, setDisabledLetters, twitterGrid } =
-    useContext(AppContext);
+  const {
+    board,
+    answer,
+    currentAttempt,
+    setDisabledLetters,
+  } = useContext(AppContext);
   {
     /** Get the current letter that is on the board */
   }
@@ -26,13 +30,13 @@ function Letter({ letterPosition, attemptValue }) {
     currentAttempt.attempt > attemptValue &&
     (correct ? "correct" : partial ? "partial" : "incorrect");
 
-  if (currentAttempt.attempt > attemptValue) {
-    correct
-      ? twitterGrid.push('&#129001;')
-      : partial
-      ? twitterGrid.push("partial")
-      : twitterGrid.push("incorrect");
-  }
+  // if (currentAttempt.attempt > attemptValue) {
+  //   correct
+  //     ? setTwitterGrid((twitterGrid) => [...twitterGrid, "&#129001;"])
+  //     : partial
+  //     ? setTwitterGrid((twitterGrid) => [...twitterGrid, "partial"])
+  //     : setTwitterGrid((twitterGrid) => [...twitterGrid, "incorrect"]);
+  // }
 
   {
     /** Grey out the keyboard letters that are not in the word from guesses */

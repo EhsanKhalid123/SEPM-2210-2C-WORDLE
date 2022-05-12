@@ -27,7 +27,7 @@ function App() {
     gameCompleted: false,
     guessedWord: false,
   });
-  const twitterGrid = [];
+  const [twitterGrid, setTwitterGrid] = useState([]);
   const [diffInDays, setDiffInDays] = useState("");
 
   {
@@ -135,6 +135,7 @@ function App() {
     }
     if (currWord.toLowerCase() === answer.toLowerCase()) {
       setGameCompleted({ gameCompleted: true, guessedWord: true });
+
       return;
     }
 
@@ -142,6 +143,7 @@ function App() {
       setGameCompleted({ gameCompleted: true, guessedWord: false });
     }
   };
+  
 
   const r = document.querySelector(":root");
 
@@ -184,6 +186,7 @@ function App() {
           gameCompleted,
           twitterGrid,
           diffInDays,
+          setTwitterGrid,
         }}
       >
         <div className="site">
