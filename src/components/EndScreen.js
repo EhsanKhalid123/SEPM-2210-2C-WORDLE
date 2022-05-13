@@ -19,11 +19,21 @@ function EndScreen() {
     setEmojiGrid,
   } = useContext(AppContext);
   const [emoji, setEmoji] = useState("");
-  var midnight = new Date();
-  midnight.setHours(24, 0, 0, 0);
-  var midnightSeconds = Math.floor(
-    (midnight.getTime() - new Date().getTime()) / 1000
-  );
+
+  var midnight = new Date(new Date()).setUTCHours(24, 0, 0, 0) - new Date();
+
+  // console.log(midnight);
+  // console.log(midnight);
+  // const midnightUTCObject = new Date(midnightUTC);
+
+  // console.log(l);
+  // console.log(midnightUTCObject);
+
+  // console.log(d);
+
+  // midnight.setHours(24, 0, 0, 0);
+
+  var midnightSeconds = Math.floor(midnight / 1000);
 
   const format = (time) => {
     //convert seconds into hours and take whole part
@@ -47,7 +57,10 @@ function EndScreen() {
   const wordoTitleTwt = "\r\n" + "\r\n" + "WORDO: " + diffInDays.toString();
 
   const wordoTitleFb = "WORDO: " + diffInDays.toString() + "\r\n" + "\r\n";
-  const shareFbTxt = "I completed the WORDO in " + currentAttempt.attempt.toString() + "attempt[s]";
+  const shareFbTxt =
+    "I completed the WORDO in " +
+    currentAttempt.attempt.toString() +
+    "attempt[s]";
 
   const fbMessage = wordoTitleFb + shareFbTxt;
 

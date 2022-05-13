@@ -39,9 +39,9 @@ export const getWordOfTheDay = async () => {
    */
   const start = new Date("5/11/2022");
   const current = new Date();
-  current.setHours(0, 0, 0, 0);
-  const diffInDays = Math.abs(current - start) / (1000 * 60 * 60 * 24);
+  // current.setHours(0, 0, 0, 0);
 
+  const diffInDays = current.getUTCDate() - start.getDate();
 
 
   let wordOfTheDay;
@@ -51,7 +51,5 @@ export const getWordOfTheDay = async () => {
       const answerArr = result.split("\n");
       wordOfTheDay = answerArr[diffInDays];
     });
-  return { wordOfTheDay, diffInDays};
+  return { wordOfTheDay, diffInDays };
 };
-
-
