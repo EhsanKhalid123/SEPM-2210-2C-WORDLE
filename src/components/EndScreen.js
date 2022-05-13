@@ -17,6 +17,7 @@ function EndScreen() {
     board,
     emojiGrid,
     setEmojiGrid,
+    contrast,
   } = useContext(AppContext);
   const [emoji, setEmoji] = useState("");
 
@@ -57,7 +58,10 @@ function EndScreen() {
   const wordoTitleTwt = "\r\n" + "\r\n" + "wordo " + diffInDays.toString();
 
   const wordoTitleFb = "wordo " + diffInDays.toString() + "\r\n" + "\r\n";
-  const shareFbTxt = "I completed the WORDO in " + currentAttempt.attempt.toString() + "attempt[s]";
+  const shareFbTxt =
+    "I completed the WORDO in " +
+    currentAttempt.attempt.toString() +
+    "attempt[s]";
 
   const fbMessage = wordoTitleFb + shareFbTxt;
 
@@ -98,6 +102,11 @@ function EndScreen() {
     emojiString = emojiString.replace(/&#11035;;/g, "&#11035;");
     // console.log(emojiString);
     // emoji = emojiString;
+    if (contrast === "high") {
+      emojiString = emojiString.replace(/&#129001;/g, "&#128999;");
+      emojiString = emojiString.replace(/&#129000;/g, "&#128998;");
+      // console.log(emojiString);
+    }
     setEmoji(emojiString);
   });
 

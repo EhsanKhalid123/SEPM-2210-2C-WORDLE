@@ -29,6 +29,7 @@ function App() {
   });
   const [diffInDays, setDiffInDays] = useState("");
   const [emojiGrid, setEmojiGrid] = useState([]);
+  const [contrast, setContrast] = useState("normal");
 
   {
     /** The useEffect function here means that the function will only be able to run once
@@ -143,15 +144,16 @@ function App() {
   };
 
   const r = document.querySelector(":root");
-
   const setHighContrastDark = () => {
     r.style.setProperty("--colour-correct", "#e5804a");
     r.style.setProperty("--colour-partial", "#92bef4");
+    setContrast("high");
   };
 
   const setDarkMode = () => {
     r.style.setProperty("--colour-correct", "#618b55");
     r.style.setProperty("--colour-partial", "#b1a04c");
+    setContrast("normal");
   };
 
   return (
@@ -184,6 +186,7 @@ function App() {
           emojiGrid,
           diffInDays,
           setEmojiGrid,
+          contrast,
         }}
       >
         <div className="site">
