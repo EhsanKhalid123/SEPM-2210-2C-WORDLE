@@ -6,6 +6,7 @@ import Keyboard from "./components/Keyboard";
 import { createContext, useState } from "react";
 import { boardClean, generateGuessSet, getWordOfTheDay } from "./Tools";
 import EndScreen from "./components/EndScreen";
+import Switch from "./Switch";
 {
   /* Allows the functions here to be called in other components */
 }
@@ -30,6 +31,7 @@ function App() {
   const [diffInDays, setDiffInDays] = useState("");
   const [emojiGrid, setEmojiGrid] = useState([]);
   const [contrast, setContrast] = useState("normal");
+  const [value, setValue] = useState(false);
 
   {
     /** The useEffect function here means that the function will only be able to run once
@@ -155,18 +157,29 @@ function App() {
     r.style.setProperty("--colour-partial", "#b1a04c");
     setContrast("normal");
   };
+  useEffect(() => {
+    if (!value) {
+      setDarkMode();
+    }
+    if (value) {
+      setHighContrastDark();
+    }
+  });
+
 
   return (
     <div className="App">
       <nav>
         <h1>wordo</h1>
+        <Switch isOn={value} handleToggle={() => setValue(!value)} />
       </nav>
-      <button id="button" onClick={setHighContrastDark}>
+
+      {/* <button id="button" onClick={setHighContrastDark}>
         High Contrast Theme
       </button>
       <button id="button" onClick={setDarkMode}>
         Normal Theme
-      </button>
+      </button> */}
 
       {/** The following values are being used by other components in the project */}
       <AppContext.Provider
