@@ -7,7 +7,7 @@ import { createContext, useState } from "react";
 import { boardClean, generateGuessSet, getWordOfTheDay } from "./Tools";
 import EndScreen from "./components/EndScreen";
 import Switch from "./Switch";
-import render from "dom-serializer";
+import Popup from "./components/Popup";
 
 {
   /* Allows the functions here to be called in other components */
@@ -35,7 +35,7 @@ function App() {
   const [emojiGrid, setEmojiGrid] = useState([]);
   const [contrast, setContrast] = useState("normal");
   const [value, setValue] = useState(false);
-
+  const [popup, setPopup] = useState(false);
   {
     /** The useEffect function here means that the function will only be able to run once
 
@@ -132,8 +132,11 @@ function App() {
         letterPosition: 0,
       });
     } else {
-      alert("Word not in Word List");
-
+      // alert("Word not in Word List");
+      setPopup(true);
+      setTimeout(function () {
+        setPopup(false);
+      }, 1000);
     }
 
     {
@@ -177,9 +180,9 @@ function App() {
         <h1>wordo</h1>
         <Switch isOn={value} handleToggle={() => setValue(!value)} />
       </nav>
-
-      
-
+      <Popup trigger={popup}>
+        <h2>Word not in Word List!!</h2>
+      </Popup>
       {/* <button id="button" onClick={setHighContrastDark}>
         High Contrast Theme
       </button>
