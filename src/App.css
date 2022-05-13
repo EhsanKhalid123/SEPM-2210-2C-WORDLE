@@ -65,7 +65,7 @@ nav h1 {
   margin: 5px;
   display: grid;
   place-items: center;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -107,9 +107,9 @@ nav h1 {
 
 /* Style keyboard area */
 .keyboard {
-  width: 700px;
+  width: 800px;
   height: 300px;
-  margin-top: 30px;
+  margin-top: 115px;
 }
 
 /* Sets styling for first row of keyboard */
@@ -181,13 +181,13 @@ and the styling to match the keyboard that is replaces so teh site doesnt move a
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 20%;
   margin-right: 20%;
 }
 
 #secondEnd{
-  font-size: 25px;
+  font-size: 23.5px;
 }
 
 #fbook{
