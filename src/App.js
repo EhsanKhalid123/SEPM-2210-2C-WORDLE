@@ -138,7 +138,7 @@ function App() {
       if (popupCount < 1) {
         setTimeout(function () {
           setPopup(false);
-        }, 1100);
+        }, 2000);
         setPopupCount(popupCount + 1);
       } else {
         setTimeout(function () {

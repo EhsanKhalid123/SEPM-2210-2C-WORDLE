@@ -61,7 +61,7 @@ nav h1 {
 /* Colour letter box and styling */
 .letter {
   flex: 33%;
-  height: 60px;
+  height: 50px;
   border: 1.5px solid #3a3a3c;
   border-radius: 5px;
   margin: 5px;
@@ -189,7 +189,7 @@ and the styling to match the keyboard that is replaces so teh site doesnt move a
 }
 
 #secondEnd{
-  font-size: 23.5px;
+  font-size: 20px;
 }
 
 #fbook{
