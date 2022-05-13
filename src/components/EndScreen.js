@@ -54,13 +54,10 @@ function EndScreen() {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
-  const wordoTitleTwt = "\r\n" + "\r\n" + "WORDO: " + diffInDays.toString();
+  const wordoTitleTwt = "\r\n" + "\r\n" + "wordo " + diffInDays.toString();
 
-  const wordoTitleFb = "WORDO: " + diffInDays.toString() + "\r\n" + "\r\n";
-  const shareFbTxt =
-    "I completed the WORDO in " +
-    currentAttempt.attempt.toString() +
-    "attempt[s]";
+  const wordoTitleFb = "wordo " + diffInDays.toString() + "\r\n" + "\r\n";
+  const shareFbTxt = "I completed the WORDO in " + currentAttempt.attempt.toString() + "attempt[s]";
 
   const fbMessage = wordoTitleFb + shareFbTxt;
 
@@ -112,13 +109,13 @@ function EndScreen() {
   }
   return (
     <div className="endScreen">
-      <h1>
+      <h2>
         {gameCompleted.guessedWord
           ? "YOU GUESSED CORRECTLY!"
           : "YOU FAILED! GET A JOB!"}
         <br></br>
         <div id="secondEnd">The correct word is: "{answer.toUpperCase()}"</div>
-      </h1>
+      </h2>
       {gameCompleted.guessedWord && (
         <h4>
           You guessed in {currentAttempt.attempt} attempt[s]
