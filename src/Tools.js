@@ -21,7 +21,7 @@ export const generateGuessSet = async () => {
   await fetch(guessList)
     .then((response) => response.text())
     .then((result) => {
-      const guessArr = result.split("\r\n");
+      const guessArr = result.split("\n");
       guessSet = new Set(guessArr);
     });
 
@@ -39,17 +39,17 @@ export const getWordOfTheDay = async () => {
    */
   const start = new Date("5/11/2022");
   const current = new Date();
-  // current.setHours(0, 0, 0, 0);
 
-  const diffInDays = current.getUTCDate() - start.getDate();
+  const diffInDays = Math.abs(current.getUTCDate() - start.getDate());
 
+  console.log(diffInDays);
 
   let wordOfTheDay;
   await fetch(answerList)
     .then((response) => response.text())
     .then((result) => {
-      const answerArr = result.split("\r\n");
+      const answerArr = result.split("\n");
       wordOfTheDay = answerArr[diffInDays];
     });
-  return { wordOfTheDay, diffInDays };
+  return { wordOfTheDay, diffInDays};
 };
