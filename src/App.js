@@ -7,9 +7,12 @@ import { createContext, useState } from "react";
 import { boardClean, generateGuessSet, getWordOfTheDay } from "./Tools";
 import EndScreen from "./components/EndScreen";
 import Switch from "./Switch";
+import render from "dom-serializer";
+
 {
   /* Allows the functions here to be called in other components */
 }
+
 export const AppContext = createContext();
 
 {
@@ -111,6 +114,7 @@ function App() {
   {
     /** This keeps track of where the user is on the board when they click ENTER */
   }
+
   const onEnterClick = () => {
     if (currentAttempt.letterPosition !== 5) return;
 
@@ -129,6 +133,7 @@ function App() {
       });
     } else {
       alert("Word not in Word List");
+
     }
 
     {
@@ -166,13 +171,14 @@ function App() {
     }
   });
 
-
   return (
     <div className="App">
       <nav>
         <h1>wordo</h1>
         <Switch isOn={value} handleToggle={() => setValue(!value)} />
       </nav>
+
+      
 
       {/* <button id="button" onClick={setHighContrastDark}>
         High Contrast Theme

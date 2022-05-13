@@ -122,6 +122,7 @@ function EndScreen() {
   }
   return (
     <div className="endScreen">
+      <h1>test</h1>
       <h2>
         {gameCompleted.guessedWord
           ? "YOU GUESSED CORRECTLY!"
