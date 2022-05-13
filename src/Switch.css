@@ -15,9 +15,6 @@
   border-radius: 100px;
   position: relative;
   transition: background-color 0.2s;
-  margin-left: auto;
-  margin-right: 20px;
-  margin: auto;
   margin-top: 20px;
 }
 
@@ -42,3 +39,4 @@
 .react-switch-label:active .react-switch-button {
   width: 25px;
 }
+

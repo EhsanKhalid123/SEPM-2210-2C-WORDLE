@@ -60,7 +60,7 @@ function Keyboard() {
     /** Return each row and puts the delete and enter key on either side of the third row */
   }
   return (
-    <div className="keyboard" onKeyDown={handleKeyboard}>
+    <div className="keyboard">
       {/* <div className="firstLine">
         {keys1.map((key) => {
           return <Key keyval={key} disabled={disabledLetters.includes(key)} />;
@@ -77,7 +77,7 @@ function Keyboard() {
           return <Key keyval={key} disabled={disabledLetters.includes(key)} />;
         })}
         <Key keyval={"ENTER"} functionKey />
-      </div> */}
+      </div> */} <button id="button">How to Play?</button>
     </div>
   );
 }

@@ -186,6 +186,7 @@ function App() {
     <div className="App">
       <nav>
         <h1>wordo</h1>
+
         <Switch isOn={value} handleToggle={() => setValue(!value)} />
       </nav>
       <Popup trigger={popup}>
