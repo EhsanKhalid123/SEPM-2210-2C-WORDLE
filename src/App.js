@@ -36,6 +36,7 @@ function App() {
   const [contrast, setContrast] = useState("normal");
   const [value, setValue] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [popupCount, setPopupCount] = useState(0);
   {
     /** The useEffect function here means that the function will only be able to run once
 
@@ -134,9 +135,16 @@ function App() {
     } else {
       // alert("Word not in Word List");
       setPopup(true);
-      setTimeout(function () {
-        setPopup(false);
-      }, 1000);
+      if (popupCount < 1) {
+        setTimeout(function () {
+          setPopup(false);
+        }, 1100);
+        setPopupCount(popupCount + 1);
+      } else {
+        setTimeout(function () {
+          setPopup(false);
+        }, 600);
+      }
     }
 
     {
