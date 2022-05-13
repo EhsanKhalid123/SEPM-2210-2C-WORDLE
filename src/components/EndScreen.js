@@ -54,8 +54,12 @@ function EndScreen() {
   React.useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
-
-  const wordoTitleTwt = "\r\n" + "\r\n" + "wordo " + diffInDays.toString();
+  var wordoTitleTwt = "\r\n" + "\r\n" + "wordo " + diffInDays.toString();
+  
+  if (contrast === "high") {
+    wordoTitleTwt =
+      "\r\n" + "\r\n" + "high contrast wordo " + diffInDays.toString();
+  }
 
   const wordoTitleFb = "wordo " + diffInDays.toString() + "\r\n" + "\r\n";
   const shareFbTxt =
