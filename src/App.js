@@ -8,6 +8,7 @@ import { boardClean, generateGuessSet, getWordOfTheDay } from "./Tools";
 import EndScreen from "./components/EndScreen";
 import Switch from "./Switch";
 import Popup from "./components/Popup";
+import Rules from "./components/Rules";
 
 {
   /* Allows the functions here to be called in other components */
@@ -37,6 +38,7 @@ function App() {
   const [value, setValue] = useState(false);
   const [popup, setPopup] = useState(false);
   const [popupCount, setPopupCount] = useState(0);
+  const [rules, setRules] = useState(false);
   {
     /** The useEffect function here means that the function will only be able to run once
 
@@ -182,16 +184,26 @@ function App() {
     }
   });
 
+  const rulesFunction = () => {
+    setRules(true);
+    setTimeout(function () {
+      setRules(false);
+    }, 3000);
+  };
+
   return (
     <div className="App">
       <nav>
         <h1>wordo</h1>
+
+
 
         <Switch isOn={value} handleToggle={() => setValue(!value)} />
       </nav>
       <Popup trigger={popup}>
         <h2>Word not in Word List!!</h2>
       </Popup>
+      <Rules trigger={rules}>hi</Rules>
       {/* <button id="button" onClick={setHighContrastDark}>
         High Contrast Theme
       </button>
@@ -225,6 +237,9 @@ function App() {
            * depending on if the game is completed or not (simple boolean)
            */}
           <Board />
+          <button id="button" onClick={() => rulesFunction()}>
+        &#9432;
+        </button>
           {gameCompleted.gameCompleted ? <EndScreen /> : <Keyboard />}
         </div>
       </AppContext.Provider>

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useContext } from "react";
 import Key from "./Key";
 import { AppContext } from "../App";
-import Rules from "./Rules";
+
 
 function Keyboard() {
   const { onEnterClick, onDeleteClick, onPickLetter, disabledLetters } =
@@ -79,9 +79,7 @@ function Keyboard() {
         })}
         <Key keyval={"ENTER"} functionKey />
       </div> */}{" "}
-      <button id="button" onClick={<Rules>hi</Rules>}>
-        How to Play?
-      </button>
+
     </div>
   );
 }
