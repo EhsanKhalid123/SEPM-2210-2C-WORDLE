@@ -2,12 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 
 function Letter({ letterPosition, attemptValue }) {
-  const {
-    board,
-    answer,
-    currentAttempt,
-    setDisabledLetters,
-  } = useContext(AppContext);
+  const { board, answer, currentAttempt, setDisabledLetters } =
+    useContext(AppContext);
   {
     /** Get the current letter that is on the board */
   }
@@ -20,8 +16,16 @@ function Letter({ letterPosition, attemptValue }) {
     /** Initialise partial variable if the answer is not in the position,
      * but is includes in the word */
   }
+
+  useEffect(() => {
+
+
+  });
+
   const partial =
-    !correct && letter !== "" && answer.toUpperCase().includes(letter);
+    !correct &&
+    letter !== "" &&
+    answer.toUpperCase().includes(letter);
 
   {
     /** Sets the letterState one of three ways */
