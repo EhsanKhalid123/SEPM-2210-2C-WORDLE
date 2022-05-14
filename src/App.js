@@ -9,7 +9,6 @@ import EndScreen from "./components/EndScreen";
 import Switch from "./Switch";
 import Popup from "./components/Popup";
 
-
 {
   /* Allows the functions here to be called in other components */
 }
@@ -38,6 +37,7 @@ function App() {
   const [value, setValue] = useState(false);
   const [popup, setPopup] = useState(false);
   const [popupCount, setPopupCount] = useState(0);
+  const [guess, setGuess] = useState("");
 
   {
     /** The useEffect function here means that the function will only be able to run once
@@ -125,6 +125,7 @@ function App() {
     for (let i = 0; i < 5; i++) {
       currWord += board[currentAttempt.attempt][i];
     }
+    setGuess(currWord);
 
     {
       /** Checks if the word a user submits is valid for guessing */
@@ -184,14 +185,10 @@ function App() {
     }
   });
 
-
-
   return (
     <div className="App">
       <nav>
         <h1>wordo</h1>
-
-
 
         <Switch isOn={value} handleToggle={() => setValue(!value)} />
       </nav>
@@ -225,6 +222,7 @@ function App() {
           diffInDays,
           setEmojiGrid,
           contrast,
+          guess,
         }}
       >
         <div className="site">
