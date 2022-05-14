@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useContext } from "react";
+import React, { useCallback, useEffect, useContext, useState } from "react";
 import Key from "./Key";
 import { AppContext } from "../App";
-
+import Rules from "./Rules";
 
 function Keyboard() {
   const { onEnterClick, onDeleteClick, onPickLetter, disabledLetters } =
@@ -13,6 +13,7 @@ function Keyboard() {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
+  const [rules, setRules] = useState(false);
 
   const handleKeyboard = useCallback((event) => {
     {
@@ -60,6 +61,14 @@ function Keyboard() {
   {
     /** Return each row and puts the delete and enter key on either side of the third row */
   }
+
+  const rulesFunction = () => {
+    setRules(true);
+    setTimeout(function () {
+      setRules(false);
+    }, 3000);
+  };
+
   return (
     <div className="keyboard">
       {/* <div className="firstLine">
@@ -79,7 +88,13 @@ function Keyboard() {
         })}
         <Key keyval={"ENTER"} functionKey />
       </div> */}{" "}
-
+      <button id="button" onClick={() => rulesFunction()}>
+        &#9432;
+      </button>
+      <Rules trigger={rules}>
+        Use the keyboard to play the game<br></br>
+        <br></br> The switch above toggles high contrast mode
+      </Rules>
     </div>
   );
 }

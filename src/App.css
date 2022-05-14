@@ -47,8 +47,6 @@ nav h1 {
   height: 500px;
   border: 1px solid #121213;
   flex-direction: column;
-
-
 }
 
 /* styling for row */
@@ -83,6 +81,9 @@ nav h1 {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  margin-bottom: 30px;
+  margin-top: 0;
+  padding-bottom: 0;
   padding: 0;
   padding-top: 0;
   height: 30px;
@@ -177,8 +178,8 @@ and the styling to match the keyboard that is replaces so teh site doesnt move a
 .endScreen {
   font-family: Arial, Helvetica, sans-serif;
   width: 800px;
-  height: 300px;
-
+  height: 200px;
+  margin-bottom: 10px;
 }
 
 #countdown {
@@ -186,17 +187,16 @@ and the styling to match the keyboard that is replaces so teh site doesnt move a
   border-radius: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 18px;
+
+  font-size: 15px;
   margin-left: 20%;
   margin-right: 20%;
 }
 
-#secondEnd{
+#secondEnd {
   font-size: 20px;
 }
 
-#fbook{
+#fbook {
   margin-left: 10px;
 }
