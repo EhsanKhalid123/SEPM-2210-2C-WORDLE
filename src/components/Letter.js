@@ -9,28 +9,6 @@ function Letter({ letterPosition, attemptValue }) {
 
   let letter = board[attemptValue][letterPosition];
 
-  if (board[0][0] === "P") {
-    if (currentAttempt.attempt > attemptValue) {
-      //   letterState = "correct";
-      //  return board[0][0] = (
-      //     <React.Fragment>
-      //       <div id={letterState}>
-      //         {letter}
-      //       </div>
-      //     </React.Fragment>
-      //   );
-
-
-      return (board[0][0] = (
-        <React.Fragment>
-          <div className="letter" id="correct">
-            {letter}
-          </div>
-        </React.Fragment>
-      ));
-    }
-  }
-
   var correct = false;
   if (answer.toUpperCase()[letterPosition] === letter) {
     if (currentAttempt.attempt > attemptValue) {
@@ -46,38 +24,62 @@ function Letter({ letterPosition, attemptValue }) {
     }
   }
 
-  let partial = false;
-  if (answer.toUpperCase().includes(letter) && !correct && letter !== "") {
+  // let partial = false;
+  // if (answer.toUpperCase().includes(letter) && !correct && letter !== "") {
+  //   if (currentAttempt.attempt > attemptValue) {
+  //     letterState = "partial";
+  //     partial = true;
+  //     return (
+  //       <React.Fragment>
+  //         <div className="letter" id={letterState}>
+  //           {letter}
+  //         </div>
+  //       </React.Fragment>
+  //     );
+  //   }
+  // }
+
+  // if (
+  //   currentAttempt.attempt > attemptValue &&
+  //   !partial &&
+  //   !correct &&
+  //   letter !== ""
+  // ) {
+  //   letterState = "incorrect";
+  //   return (
+  //     <React.Fragment>
+  //       <div className="letter" id={letterState}>
+  //         {letter}
+  //       </div>
+  //     </React.Fragment>
+  //   );
+  // }
+  if (document.getElementsByClassName("letter")[0] !== undefined) {
+    let element = document.getElementsByClassName("letter")[0];
+    console.log(element);
     if (currentAttempt.attempt > attemptValue) {
-      letterState = "partial";
-      partial = true;
-      return (
-        <React.Fragment>
-          <div className="letter" id={letterState}>
-            {letter}
-          </div>
-        </React.Fragment>
-      );
+      element.setAttribute("id", "incorrect");
+    }
+  }
+  if (document.getElementsByClassName("letter")[6] !== undefined) {
+    let element = document.getElementsByClassName("letter")[6];
+    console.log(element);
+    if (currentAttempt.attempt > attemptValue) {
+      element.setAttribute("id", "incorrect");
+    }
+  }
+  if (document.getElementsByClassName("letter")[4] !== undefined) {
+    let element = document.getElementsByClassName("letter")[4];
+    console.log(element);
+    if (currentAttempt.attempt > attemptValue) {
+      element.setAttribute("id", "incorrect");
     }
   }
 
-  if (
-    currentAttempt.attempt > attemptValue &&
-    !partial &&
-    !correct &&
-    letter !== ""
-  ) {
-    letterState = "incorrect";
-    return (
-      <React.Fragment>
-        <div className="letter" id={letterState}>
-          {letter}
-        </div>
-      </React.Fragment>
-    );
-  }
-  let id = document.getElementsByClassName("letter")[0].id;
-  console.log(id);
+  // id.setAttribute("id", "correct");
+  // if (document.getElementsByClassName("letter")[0].hasAttribute(id)){
+  //   document.getElementsByClassName("letter")[0].id = "correct";
+  // }
 
   // MAKE PROGRESS BY CHANGING ID INSTEAD
   return (
