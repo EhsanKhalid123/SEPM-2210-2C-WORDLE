@@ -4,15 +4,31 @@ import ReactDOM from "react-dom/client";
 import Parser from "html-react-parser";
 
 function Letter({ letterPosition, attemptValue }) {
-  const { board, answer, currentAttempt, setDisabledLetters, guess } =
-    useContext(AppContext);
+  const { board, answer, currentAttempt, guess } = useContext(AppContext);
   let letterState = "";
-  {
-    /** Get the current letter that is on the board */
-  }
+
   let letter = board[attemptValue][letterPosition];
-  {
-    /** Initialise correct variable if the answer is in the position */
+
+  if (board[0][0] === "P") {
+    if (currentAttempt.attempt > attemptValue) {
+      //   letterState = "correct";
+      //  return board[0][0] = (
+      //     <React.Fragment>
+      //       <div id={letterState}>
+      //         {letter}
+      //       </div>
+      //     </React.Fragment>
+      //   );
+
+
+      return (board[0][0] = (
+        <React.Fragment>
+          <div className="letter" id="correct">
+            {letter}
+          </div>
+        </React.Fragment>
+      ));
+    }
   }
 
   var correct = false;
@@ -60,7 +76,10 @@ function Letter({ letterPosition, attemptValue }) {
       </React.Fragment>
     );
   }
+  let id = document.getElementsByClassName("letter")[0].id;
+  console.log(id);
 
+  // MAKE PROGRESS BY CHANGING ID INSTEAD
   return (
     <React.Fragment>
       <div className="letter">{letter}</div>
