@@ -54,7 +54,7 @@ function App() {
     });
     getWordOfTheDay().then((words) => {
       // setAnswer(words.wordOfTheDay);
-      setAnswer("fibre")
+      setAnswer(words.wordOfTheDay)
       setDiffInDays(words.diffInDays);
     });
   }, []);

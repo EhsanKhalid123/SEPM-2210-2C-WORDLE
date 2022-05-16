@@ -42,7 +42,7 @@ export const getWordOfTheDay = async () => {
 
   const diffInDays = Math.abs(current.getUTCDate() - start.getDate());
 
-  console.log(diffInDays);
+  // console.log(diffInDays);
 
   let wordOfTheDay;
   await fetch(answerList)
