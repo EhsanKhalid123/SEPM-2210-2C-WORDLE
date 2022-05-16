@@ -21,9 +21,11 @@ function Letter({ letterPosition, attemptValue }) {
       letterState = "correct";
       correct = true;
       return (
-        <div className="letter" id={letterState}>
-          {letter}
-        </div>
+        <React.Fragment>
+          <div className="letter" id={letterState}>
+            {letter}
+          </div>
+        </React.Fragment>
       );
     }
   }
@@ -59,22 +61,6 @@ function Letter({ letterPosition, attemptValue }) {
     );
   }
 
-  // if (currentAttempt.attempt > attemptValue) {
-  //   correct
-  //     ? setTwitterGrid((twitterGrid) => [...twitterGrid, "&#129001;"])
-  //     : partial
-  //     ? setTwitterGrid((twitterGrid) => [...twitterGrid, "partial"])
-  //     : setTwitterGrid((twitterGrid) => [...twitterGrid, "incorrect"]);
-  // }
-
-  {
-    /** Grey out the keyboard letters that are not in the word from guesses */
-  }
-  // useEffect(() => {
-  //   if (letter !== "" && !correct && !partial) {
-  //     setDisabledLetters((letterState) => [...letterState, letter]);
-  //   }
-  // }, [currentAttempt.attempt]);
   return (
     <React.Fragment>
       <div className="letter">{letter}</div>
