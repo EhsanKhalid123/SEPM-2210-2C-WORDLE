@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../App";
-import ReactDOM from "react-dom/client";
-import Parser from "html-react-parser";
+
 
 function Letter({ letterPosition, attemptValue }) {
-  const { board, answer, currentAttempt, guess, setEmojiGrid } =
+  const { board, answer, currentAttempt, guess, } =
     useContext(AppContext);
   let letterState = "";
 
