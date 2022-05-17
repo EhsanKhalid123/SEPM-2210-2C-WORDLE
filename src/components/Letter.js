@@ -68,15 +68,6 @@ function Letter({ letterPosition, attemptValue }) {
       .map((char) => char[0]);
   };
 
-  function firstRepeatingCharacter(str) {
-    for (let i = 0; i < str.length; i++) {
-      if (str.indexOf(str.charAt(i)) !== str.lastIndexOf(str.charAt(i))) {
-        return i;
-      }
-    }
-    return;
-  }
-
   function colourLetter(i, colour) {
     if (document.getElementsByClassName("letter")[i] !== undefined) {
       let element = document.getElementsByClassName("letter")[i];
