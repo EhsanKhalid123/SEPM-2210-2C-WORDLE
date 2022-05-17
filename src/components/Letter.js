@@ -78,8 +78,6 @@ function Letter({ letterPosition, attemptValue }) {
     if (boardRow[boardIndex] === answer.toUpperCase()[boardIndex]) {
       colourLetter(letterIndex, correct);
     } else if (answer.toUpperCase().includes(boardRow[boardIndex])) {
-      var answerRepeatChars = getRepeatedChars(answer);
-
       var guessRepeatChars = getRepeatedChars(guess);
       colourLetter(letterIndex, partial);
       for (let p = 0; p < guessRepeatChars.length; p++) {
