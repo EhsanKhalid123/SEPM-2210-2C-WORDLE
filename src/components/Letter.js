@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../App";
 
-
 function Letter({ letterPosition, attemptValue }) {
-  const { board, answer, currentAttempt, guess, } =
-    useContext(AppContext);
+  const { board, answer, currentAttempt, guess } = useContext(AppContext);
   let letterState = "";
 
   let letter = board[attemptValue][letterPosition];
@@ -83,40 +81,35 @@ function Letter({ letterPosition, attemptValue }) {
       var answerRepeatChars = getRepeatedChars(answer);
 
       var guessRepeatChars = getRepeatedChars(guess);
-
-      if (answerRepeatChars.length === 0 && guessRepeatChars.length === 0) {
-        colourLetter(letterIndex, partial);
-      }
-
-      if (answerRepeatChars.length === 0 && guessRepeatChars.length > 0) {
-        for (let p = 0; p < guessRepeatChars.length; p++) {
-          if (guessRepeatChars[p] === boardRow[boardIndex]) {
-            let repeatAnswer = false;
-            for (let g = 0; g < boardRow.length; g++) {
-              if (
-                boardRow[g] === answer.toUpperCase()[g] &&
-                boardRow[g] === guessRepeatChars[p]
-              ) {
-                repeatAnswer = true;
-              }
+      colourLetter(letterIndex, partial);
+      for (let p = 0; p < guessRepeatChars.length; p++) {
+        if (guessRepeatChars[p] === boardRow[boardIndex]) {
+          let repeatAnswer = false;
+          for (let g = 0; g < boardRow.length; g++) {
+            if (
+              boardRow[g] === answer.toUpperCase()[g] &&
+              boardRow[g] === guessRepeatChars[p]
+            ) {
+              repeatAnswer = true;
             }
-
-            if (repeatAnswer) {
-              colourLetter(letterIndex, incorrect);
-            } else {
-              if (
-                boardIndex ===
-                boardRow.findIndex((element) => element === guessRepeatChars[p])
-              ) {
-                colourLetter(letterIndex, partial);
-              } else {
-                colourLetter(letterIndex, incorrect);
-              }
-            }
-          } else {
-            colourLetter(letterIndex, partial);
           }
+
+          if (repeatAnswer) {
+            colourLetter(letterIndex, incorrect);
+          } else {
+            if (
+              boardIndex ===
+              boardRow.findIndex((element) => element === guessRepeatChars[p])
+            ) {
+              colourLetter(letterIndex, partial);
+            } else {
+              colourLetter(letterIndex, incorrect);
+            }
+          }
+        } else {
+          colourLetter(letterIndex, partial);
         }
+  
       }
     } else {
       colourLetter(letterIndex, incorrect);
