@@ -88,13 +88,13 @@ function Keyboard() {
         })}
         <Key keyval={"ENTER"} functionKey />
       </div> */}{" "}
-      <button id="button" onClick={() => rulesFunction()}>
+      {/* <button id="button" onClick={() => rulesFunction()}>
         &#9432;
       </button>
       <Rules trigger={rules}>
         Use the keyboard to play the game<br></br>
         <br></br> The switch above toggles high contrast mode
-      </Rules>
+      </Rules> */}
     </div>
   );
 }
