@@ -18,6 +18,7 @@ function EndScreen() {
     emojiGrid,
     setEmojiGrid,
     contrast,
+    letter1,
   } = useContext(AppContext);
   const [emoji, setEmoji] = useState("");
 
@@ -55,7 +56,7 @@ function EndScreen() {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
   var wordoTitleTwt = "\r\n" + "\r\n" + "wordo " + diffInDays.toString();
-  
+
   if (contrast === "high") {
     wordoTitleTwt =
       "\r\n" + "\r\n" + "high contrast wordo " + diffInDays.toString();
@@ -70,36 +71,37 @@ function EndScreen() {
   const fbMessage = wordoTitleFb + shareFbTxt;
 
   useEffect(() => {
-    for (var i = 0; i < board.length; i++) {
-      // if (board[i] === "") {
-      //   return;
-      // }
-      var boardy = board[i];
-      for (var j = 0; j < boardy.length; j++) {
-        if (boardy[j] === "") {
-          return;
-        }
-        // console.log("board[" + i + "][" + j + "] = " + boardy[j]);
-        if (board[i][j] === answer.toUpperCase()[j]) {
-          setEmojiGrid((emojiGrid) => [...emojiGrid, "&#129001;"]);
-        } else if (
-          answer.toUpperCase().includes(board[i][j]) &&
-          board[i][j] != "" &&
-          board[i][j] != answer.toUpperCase()[j]
-        ) {
-          setEmojiGrid((emojiGrid) => [...emojiGrid, "&#129000;"]);
-        } else {
-          setEmojiGrid((emojiGrid) => [...emojiGrid, "&#11035;;"]);
+    var count = 0;
+    for (let j = 0; j < 6; j++) {
+      for (let i = 0; i < 5; i++) {
+        if (board[j][i] !== "") {
+          count = count + 1;
         }
       }
-      // console.log("\n");
     }
+    for (let h = 0; h < count; h++) {
+      let p = (document.getElementsByClassName("letter")[h].id);
+      if (p === "correct") {
+        setEmojiGrid((emojiGrid) => [...emojiGrid, "&#129001;"]);
+      }
+
+      if (p === "partial") {
+        setEmojiGrid((emojiGrid) => [...emojiGrid, "&#129000;"]);
+      }
+
+      if (p === "incorrect") {
+        setEmojiGrid((emojiGrid) => [...emojiGrid, "&#11035;;"]);
+      }
+    }
+
   }, []);
 
   useEffect(() => {
     const half = Math.ceil([...emojiGrid].length / 2);
     const emoji = [...emojiGrid].slice(0, half);
+    
     var emojiString = emoji.toString();
+
     // console.log(emojiString);
     emojiString = emojiString.replace(/,/g, " ");
     emojiString = emojiString.replace(/(?!$|\n)([^\n]{50}(?!\n))/g, "$1\n");

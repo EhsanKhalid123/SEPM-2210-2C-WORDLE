@@ -38,6 +38,7 @@ function App() {
   const [popup, setPopup] = useState(false);
   const [popupCount, setPopupCount] = useState(0);
   const [guess, setGuess] = useState("");
+  const [letter1, setLetter1] = useState("");
 
   {
     /** The useEffect function here means that the function will only be able to run once
@@ -224,6 +225,8 @@ function App() {
           setEmojiGrid,
           contrast,
           guess,
+          letter1,
+          setLetter1
         }}
       >
         <div className="site">

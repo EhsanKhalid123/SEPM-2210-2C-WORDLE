@@ -4,7 +4,8 @@ import ReactDOM from "react-dom/client";
 import Parser from "html-react-parser";
 
 function Letter({ letterPosition, attemptValue }) {
-  const { board, answer, currentAttempt, guess } = useContext(AppContext);
+  const { board, answer, currentAttempt, guess, setEmojiGrid } =
+    useContext(AppContext);
   let letterState = "";
 
   let letter = board[attemptValue][letterPosition];
