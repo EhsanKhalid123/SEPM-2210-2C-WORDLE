@@ -8,21 +8,24 @@ function Letter({ letterPosition, attemptValue }) {
   let letterState = "";
 
   let letter = board[attemptValue][letterPosition];
+  const correct = "correct";
+  const partial = "partial";
+  const incorrect = "incorrect";
 
-  var correct = false;
-  if (answer.toUpperCase()[letterPosition] === letter) {
-    if (currentAttempt.attempt > attemptValue) {
-      letterState = "correct";
-      correct = true;
-      return (
-        <React.Fragment>
-          <div className="letter" id={letterState}>
-            {letter}
-          </div>
-        </React.Fragment>
-      );
-    }
-  }
+  // var correct = false;
+  // if (answer.toUpperCase()[letterPosition] === letter) {
+  //   if (currentAttempt.attempt > attemptValue) {
+  //     letterState = "correct";
+  //     correct = true;
+  //     return (
+  //       <React.Fragment>
+  //         <div className="letter" id={letterState}>
+  //           {letter}
+  //         </div>
+  //       </React.Fragment>
+  //     );
+  //   }
+  // }
 
   // let partial = false;
   // if (answer.toUpperCase().includes(letter) && !correct && letter !== "") {
@@ -54,34 +57,134 @@ function Letter({ letterPosition, attemptValue }) {
   //     </React.Fragment>
   //   );
   // }
-  if (document.getElementsByClassName("letter")[0] !== undefined) {
-    let element = document.getElementsByClassName("letter")[0];
-    console.log(element);
-    if (currentAttempt.attempt > attemptValue) {
-      element.setAttribute("id", "incorrect");
+  const getRepeatedChars = (str) => {
+    const chars = {};
+    for (const char of str) {
+      chars[char] = (chars[char] || 0) + 1;
     }
-  }
-  if (document.getElementsByClassName("letter")[6] !== undefined) {
-    let element = document.getElementsByClassName("letter")[6];
-    console.log(element);
-    if (currentAttempt.attempt > attemptValue) {
-      element.setAttribute("id", "incorrect");
+    return Object.entries(chars)
+      .filter((char) => char[1] > 1)
+      .map((char) => char[0]);
+  };
+
+  function firstRepeatingCharacter(str) {
+    for (let i = 0; i < str.length; i++) {
+      if (str.indexOf(str.charAt(i)) !== str.lastIndexOf(str.charAt(i))) {
+        return i;
+      }
     }
+    return;
   }
-  if (document.getElementsByClassName("letter")[4] !== undefined) {
-    let element = document.getElementsByClassName("letter")[4];
-    console.log(element);
-    if (currentAttempt.attempt > attemptValue) {
-      element.setAttribute("id", "incorrect");
+
+  function colourLetter(i, colour) {
+    if (document.getElementsByClassName("letter")[i] !== undefined) {
+      let element = document.getElementsByClassName("letter")[i];
+      if (currentAttempt.attempt > attemptValue) {
+        element.setAttribute("id", colour);
+      }
     }
   }
 
-  // id.setAttribute("id", "correct");
-  // if (document.getElementsByClassName("letter")[0].hasAttribute(id)){
-  //   document.getElementsByClassName("letter")[0].id = "correct";
-  // }
+  function letterCheck(letterIndex, boardIndex, boardRow) {
+    if (boardRow[boardIndex] === answer.toUpperCase()[boardIndex]) {
+      colourLetter(letterIndex, correct);
+    } else if (answer.toUpperCase().includes(boardRow[boardIndex])) {
+      colourLetter(letterIndex, partial);
+    } else {
+      colourLetter(letterIndex, incorrect);
+    }
+  }
+  /**
+   *
+   * FIRST ROW
+   *
+   */
+  useEffect(() => {
+    if (currentAttempt.attempt > 0) {
+      var boardRow = board[0];
+      letterCheck(0, 0, boardRow);
+      letterCheck(1, 1, boardRow);
+      letterCheck(2, 2, boardRow);
+      letterCheck(3, 3, boardRow);
+      letterCheck(4, 4, boardRow);
+    }
+  }, [currentAttempt.attempt < 1]);
+  /**
+   *
+   * SECOND ROW
+   *
+   */
+  useEffect(() => {
+    if (currentAttempt.attempt > 1) {
+      var boardRow = board[1];
+      letterCheck(5, 0, boardRow);
+      letterCheck(6, 1, boardRow);
+      letterCheck(7, 2, boardRow);
+      letterCheck(8, 3, boardRow);
+      letterCheck(9, 4, boardRow);
+    }
+  }, [currentAttempt.attempt < 2]);
+  /**
+   *
+   * THIRD ROW
+   *
+   */
+  useEffect(() => {
+    if (currentAttempt.attempt > 2) {
+      var boardRow = board[2];
+      letterCheck(10, 0, boardRow);
+      letterCheck(11, 1, boardRow);
+      letterCheck(12, 2, boardRow);
+      letterCheck(13, 3, boardRow);
+      letterCheck(14, 4, boardRow);
+    }
+  }, [currentAttempt.attempt < 3]);
+  /**
+   *
+   * FOURTH ROW
+   *
+   */
+  useEffect(() => {
+    if (currentAttempt.attempt > 3) {
+      var boardRow = board[3];
+      letterCheck(15, 0, boardRow);
+      letterCheck(16, 1, boardRow);
+      letterCheck(17, 2, boardRow);
+      letterCheck(18, 3, boardRow);
+      letterCheck(19, 4, boardRow);
+    }
+  }, [currentAttempt.attempt < 4]);
+  /**
+   *
+   * FIFTH ROW
+   *
+   */
+  useEffect(() => {
+    if (currentAttempt.attempt > 4) {
+      var boardRow = board[4];
+      letterCheck(20, 0, boardRow);
+      letterCheck(21, 1, boardRow);
+      letterCheck(22, 2, boardRow);
+      letterCheck(23, 3, boardRow);
+      letterCheck(24, 4, boardRow);
+    }
+  }, [currentAttempt.attempt < 5]);
+  /**
+   *
+   * SIXTH ROW
+   *
+   */
+  useEffect(() => {
+    if (currentAttempt.attempt > 5) {
+      var boardRow = board[5];
+      letterCheck(25, 0, boardRow);
+      letterCheck(26, 1, boardRow);
+      letterCheck(27, 2, boardRow);
+      letterCheck(28, 3, boardRow);
+      letterCheck(29, 3, boardRow);
+    }
+  }, [currentAttempt.attempt < 6]);
 
-  // MAKE PROGRESS BY CHANGING ID INSTEAD
   return (
     <React.Fragment>
       <div className="letter">{letter}</div>
