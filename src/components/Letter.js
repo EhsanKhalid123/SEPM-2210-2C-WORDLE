@@ -214,9 +214,9 @@ function Letter({ letterPosition, attemptValue }) {
   }, [currentAttempt.attempt < 6]);
 
   return (
-    <React.Fragment>
+    <>
       <div className="letter">{letter}</div>
-    </React.Fragment>
+    </>
   );
 }
 
