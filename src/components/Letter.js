@@ -89,7 +89,44 @@ function Letter({ letterPosition, attemptValue }) {
     if (boardRow[boardIndex] === answer.toUpperCase()[boardIndex]) {
       colourLetter(letterIndex, correct);
     } else if (answer.toUpperCase().includes(boardRow[boardIndex])) {
-      colourLetter(letterIndex, partial);
+      var answerRepeatChars = getRepeatedChars(answer);
+
+      var guessRepeatChars = getRepeatedChars(guess);
+
+      if (answerRepeatChars.length === 0 && guessRepeatChars.length === 0) {
+        colourLetter(letterIndex, partial);
+      }
+
+      if (answerRepeatChars.length === 0 && guessRepeatChars.length > 0) {
+        for (let p = 0; p < guessRepeatChars.length; p++) {
+          if (guessRepeatChars[p] === boardRow[boardIndex]) {
+            let repeatAnswer = false;
+            for (let g = 0; g < boardRow.length; g++) {
+              if (
+                boardRow[g] === answer.toUpperCase()[g] &&
+                boardRow[g] === guessRepeatChars[p]
+              ) {
+                repeatAnswer = true;
+              }
+            }
+
+            if (repeatAnswer) {
+              colourLetter(letterIndex, incorrect);
+            } else {
+              if (
+                boardIndex ===
+                boardRow.findIndex((element) => element === guessRepeatChars[p])
+              ) {
+                colourLetter(letterIndex, partial);
+              } else {
+                colourLetter(letterIndex, incorrect);
+              }
+            }
+          } else {
+            colourLetter(letterIndex, partial);
+          }
+        }
+      }
     } else {
       colourLetter(letterIndex, incorrect);
     }
