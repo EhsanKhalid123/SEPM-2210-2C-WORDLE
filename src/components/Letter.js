@@ -200,7 +200,7 @@ function Letter({ letterPosition, attemptValue }) {
       letterCheck(26, 1, boardRow);
       letterCheck(27, 2, boardRow);
       letterCheck(28, 3, boardRow);
-      letterCheck(29, 3, boardRow);
+      letterCheck(29, 4, boardRow);
     }
   }, [currentAttempt.attempt < 6]);
 

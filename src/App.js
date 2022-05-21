@@ -54,8 +54,8 @@ function App() {
       setGuessSet(words.guessSet);
     });
     getWordOfTheDay().then((words) => {
-      setAnswer(words.wordOfTheDay);
-      // setAnswer("HELLO")
+      // setAnswer(words.wordOfTheDay);
+      setAnswer("DECOY")
       setDiffInDays(words.diffInDays);
     });
   }, []);
