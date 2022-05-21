@@ -145,10 +145,12 @@ function App() {
           setPopup(false);
         }, 2000);
         setPopupCount(popupCount + 1);
+        return;
       } else {
         setTimeout(function () {
           setPopup(false);
         }, 600);
+        return;
       }
     }
 
