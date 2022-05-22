@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 
 function Letter({ letterPosition, attemptValue }) {
   const { board, answer, currentAttempt, guess } = useContext(AppContext);
-  let letterState = "";
+
 
   let letter = board[attemptValue][letterPosition];
   const correct = "correct";
