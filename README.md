@@ -1,6 +1,6 @@
-# SEPM-2210-2C-WORDLE
+# Wordle Clone - React
 
-Sprint 1 & 2 - Assessment
+This is a copy of wordle game developed by Ehsan Khalid, Sagar Datta, Joshua Santo
 
 wordle is for very high IQ individuals 👀
 
